@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr2i80hrnuyj6"
+path="res://.godot/imported/Politician Theme.mp3-6851763b2e74243f72688c4e11029019.mp3str"
+
+[deps]
+
+source_file="res://ASSETS/MUSIC/Politician Theme.mp3"
+dest_files=["res://.godot/imported/Politician Theme.mp3-6851763b2e74243f72688c4e11029019.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

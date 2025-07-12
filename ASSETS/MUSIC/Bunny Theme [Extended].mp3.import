@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcgg7fro7nknd"
+path="res://.godot/imported/Bunny Theme [Extended].mp3-f5d2e472850a362d0b3b51378f5eb938.mp3str"
+
+[deps]
+
+source_file="res://ASSETS/MUSIC/Bunny Theme [Extended].mp3"
+dest_files=["res://.godot/imported/Bunny Theme [Extended].mp3-f5d2e472850a362d0b3b51378f5eb938.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
