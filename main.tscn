@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvhcb"]
 size = Vector2(4, 15)
 
-[node name="Main" type="Node"]
+[node name="silicon_village" type="Node"]
 script = ExtResource("1_3h6kj")
 
 [node name="background" parent="." instance=ExtResource("3_bfeqp")]
