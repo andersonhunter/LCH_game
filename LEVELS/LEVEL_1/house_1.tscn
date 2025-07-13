@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4e6esw3j7t65"]
+
+[ext_resource type="Texture2D" uid="uid://dymkignoxtbc8" path="res://ASSETS/map_1_tileset.png" id="1_wng8l"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_crc8r"]
+texture = ExtResource("1_wng8l")
+1:29/0 = 0
+2:29/0 = 0
+3:29/0 = 0
+1:30/0 = 0
+2:30/0 = 0
+3:30/0 = 0
+1:31/0 = 0
+1:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -4, -4, -4, 0, -8, 0)
+2:31/0 = 0
+2:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
+3:31/0 = 0
+3:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, 4, 0, 4, -4, -8, -4)
+5:31/0 = 0
+5:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, -4, 0, -4, 8, -8, 8)
+6:31/0 = 0
+7:31/0 = 0
+8:31/0 = 0
+8:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, 0, 8, 0, 8, 8, 4, 8)
+5:32/0 = 0
+5:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4, -8, -4, 8, 8, 8, -8, 8)
+6:32/0 = 0
+6:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 8, 8, 8, -8, 8)
+7:32/0 = 0
+7:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 8, 8, 8, -8, 8)
+8:32/0 = 0
+8:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, -8, 4, -8, 4, 8, -8, 8)
+7:41/0 = 0
+10:41/0 = 0
+11:41/0 = 0
+12:41/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_570w6"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_crc8r")
+
+[node name="house_1" type="TileMapLayer"]
+tile_set = SubResource("TileSet_570w6")
