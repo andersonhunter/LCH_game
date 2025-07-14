@@ -1,6 +1,8 @@
 extends Node
 
-var house_1 = "res://LEVELS/LEVEL_1/inside_house.tscn"
+var house_1 = "res://LEVELS/LEVEL_1/inside_house_1.tscn"
+var house_2 = "res://LEVELS/LEVEL_1/inside_house_2.tscn"
+var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +23,19 @@ func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 	# Player is entering pink house
 	if body == $Player:
 		# Save location for later
-		print(house_1)
 		Global.player_location = $Player.position
 		Global.goto_scene(house_1)
+
+func _on_enter_purple_house_body_entered(body: Node2D) -> void:
+	# Player is entering the purple house
+	if body == $Player:
+		# Save location for later
+		Global.player_location = $Player.position
+		Global.goto_scene(house_2)
+
+func _on_enter_blue_house_body_entered(body: Node2D) -> void:
+	# Player is entering the blue house
+	if body == $Player:
+		# Save location for later
+		Global.player_location = $Player.position
+		Global.goto_scene(house_3)
