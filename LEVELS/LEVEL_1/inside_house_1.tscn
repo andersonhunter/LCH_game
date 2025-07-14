@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=4 uid="uid://qkdj0y5xciq2"]
+
+[ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_k4pac"]
+[ext_resource type="PackedScene" uid="uid://c4e6esw3j7t65" path="res://LEVELS/LEVEL_1/house_1.tscn" id="2_qcrpp"]
+[ext_resource type="PackedScene" uid="uid://p0ye6xumm1pp" path="res://LEVELS/LEVEL_1/player.tscn" id="3_sj4rv"]
+[ext_resource type="Texture2D" uid="uid://bjaxc6fi6pv3t" path="res://ASSETS/white_light_1.png" id="4_i6c7v"]
+[ext_resource type="Texture2D" uid="uid://cktmgosbcmhvj" path="res://ASSETS/white_light_2.png" id="5_nli47"]
+[ext_resource type="Texture2D" uid="uid://da7do43t4717t" path="res://ASSETS/white_light_3.png" id="6_egeap"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yw84q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i6c7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nli47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_egeap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nli47")
+}],
+"loop": true,
+"name": &"blink",
+"speed": 1.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xxo3"]
+size = Vector2(8, 7)
+
+[node name="inside_house_1" type="Node"]
+script = ExtResource("1_k4pac")
+
+[node name="wall" parent="." instance=ExtResource("2_qcrpp")]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9////AAABAB4AAAD9/wAAAAABAB4AAAD9/wEAAAABAB8AAAACAP//AAADAB4AAAACAAAAAAADAB4AAAACAAEAAAADAB8AAAABAAEAAAACAB8AAAAAAAEAAAACAB8AAAD//wEAAAACAB8AAAD+/wEAAAACAB8AAAABAP//AAACAB4AAAABAAAAAAACAB4AAAAAAAAAAAACAB4AAAD//wAAAAACAB4AAAD+/wAAAAACAB4AAAD+////AAACAB4AAAD/////AAACAB4AAAAAAP//AAACAB4AAAD9//7/AAABAB0AAAD+//7/AAACAB0AAAD///7/AAACAB0AAAAAAP7/AAACAB0AAAABAP7/AAACAB0AAAACAP7/AAADAB0AAAA=")
+
+[node name="windows" parent="." instance=ExtResource("2_qcrpp")]
+texture_filter = 1
+scale = Vector2(0.7, 0.7)
+tile_map_data = PackedByteArray("AAD9/wAAAAAHACkAAAACAAAAAAAHACkAAAA=")
+
+[node name="floor" parent="." instance=ExtResource("2_qcrpp")]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wEAAAAFAB8AAAD+/wEAAAAGAB8AAAD//wEAAAAGAB8AAAAAAAEAAAAGAB8AAAABAAEAAAAGAB8AAAACAAEAAAAIAB8AAAD9/wIAAAAFACAAAAD+/wIAAAAHACAAAAAAAAIAAAAHACAAAAABAAIAAAAHACAAAAACAAIAAAAIACAAAAD//wIAAAAGACAAAAA=")
+
+[node name="Player" parent="." instance=ExtResource("3_sj4rv")]
+position = Vector2(-8, 37)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="l_light" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-38, -6)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yw84q")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.762356
+
+[node name="r_light" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, -6)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yw84q")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.0429239
+
+[node name="leave_house" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leave_house"]
+position = Vector2(-8, 44.5)
+shape = SubResource("RectangleShape2D_3xxo3")
+
+[connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]
