@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://1ptksoeppc8j"]
+[gd_scene load_steps=9 format=4 uid="uid://1ptksoeppc8j"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/little_endian.gd" id="1_j410d"]
 [ext_resource type="PackedScene" uid="uid://bhsegbh3s6k8c" path="res://LEVELS/LEVEL_1/tile_map_layer.tscn" id="2_coe6v"]
@@ -12,6 +12,9 @@ size = Vector2(4, 2)
 size = Vector2(4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_daanj"]
+size = Vector2(4, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srjm5"]
 size = Vector2(4, 2)
 
 [node name="little_endian" type="Node"]
@@ -45,6 +48,12 @@ shape = SubResource("RectangleShape2D_c8et5")
 position = Vector2(448, 311)
 shape = SubResource("RectangleShape2D_daanj")
 
+[node name="enter_brown_house" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_brown_house"]
+position = Vector2(448, 392)
+shape = SubResource("RectangleShape2D_srjm5")
+
 [node name="Player" parent="." instance=ExtResource("4_cwj72")]
 position = Vector2(360, 360)
 
@@ -54,3 +63,4 @@ zoom = Vector2(8, 8)
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
+[connection signal="body_entered" from="enter_brown_house" to="." method="_on_enter_brown_house_body_entered"]

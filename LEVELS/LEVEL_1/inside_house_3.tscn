@@ -1,0 +1,141 @@
+[gd_scene load_steps=14 format=4 uid="uid://lcktnhuul81o"]
+
+[ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_6jebe"]
+[ext_resource type="PackedScene" uid="uid://c4e6esw3j7t65" path="res://LEVELS/LEVEL_1/house_1.tscn" id="2_3bfvi"]
+[ext_resource type="Texture2D" uid="uid://dymkignoxtbc8" path="res://ASSETS/map_1_tileset.png" id="2_k05me"]
+[ext_resource type="PackedScene" uid="uid://p0ye6xumm1pp" path="res://LEVELS/LEVEL_1/player.tscn" id="3_7xjiw"]
+[ext_resource type="Texture2D" uid="uid://bjaxc6fi6pv3t" path="res://ASSETS/white_light_1.png" id="4_3rn4o"]
+[ext_resource type="Texture2D" uid="uid://cktmgosbcmhvj" path="res://ASSETS/white_light_2.png" id="5_osb14"]
+[ext_resource type="Texture2D" uid="uid://da7do43t4717t" path="res://ASSETS/white_light_3.png" id="6_murwu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pa41w"]
+texture = ExtResource("2_k05me")
+10:33/0 = 0
+11:33/0 = 0
+12:33/0 = 0
+12:34/0 = 0
+12:35/0 = 0
+12:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, 4, 0, 4, -4, -8, -4, -8, -6, 4, -6, 8, -6)
+11:35/0 = 0
+11:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, -6, -8, -6)
+10:35/0 = 0
+10:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6, -8, 0, -4, 0, -4, -4, 8, -4, 8, -6)
+10:34/0 = 0
+11:34/0 = 0
+14:34/0 = 0
+14:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, -4, 0, -4, 8, -8, 8)
+15:34/0 = 0
+16:34/0 = 0
+17:34/0 = 0
+17:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, 0, 8, 0, 8, 8, 4, 8)
+17:35/0 = 0
+17:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, -8, 4, -8, 4, 8)
+16:35/0 = 0
+16:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, 8, -8, 8)
+15:35/0 = 0
+15:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, 8, -8, 8)
+14:35/0 = 0
+14:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -8, -4, -8, -4, 8)
+10:39/0 = 0
+11:39/0 = 0
+12:39/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p7ya1"]
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_pa41w")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivu4r"]
+texture = ExtResource("2_k05me")
+14:34/0 = 0
+14:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, -8, 8, -4, 8, -4, 0)
+14:35/0 = 0
+14:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, -8, -4, -8, -4, 8)
+15:35/0 = 0
+15:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, 8, -8, 8)
+16:35/0 = 0
+16:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 8, 8, 8, -8, 8)
+17:35/0 = 0
+17:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 4, 8, 4, -8, 8, -8, 8, 8)
+17:34/0 = 0
+17:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, 0, 8, 0, 8, 8, 4, 8)
+16:34/0 = 0
+15:34/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hrxwn"]
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_ivu4r")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yw84q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3rn4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_osb14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_murwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_osb14")
+}],
+"loop": true,
+"name": &"blink",
+"speed": 1.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xxo3"]
+size = Vector2(8, 7)
+
+[node name="inside_house_3" type="Node"]
+script = ExtResource("1_6jebe")
+
+[node name="wall" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wEAAAAKACMAAAD+/wEAAAALACMAAAD//wEAAAALACMAAAAAAAEAAAALACMAAAABAAEAAAALACMAAAACAAEAAAAMACMAAAACAAAAAAAMACIAAAACAP//AAAMACIAAAACAP7/AAAMACEAAAABAP7/AAALACEAAAAAAP7/AAALACEAAAD///7/AAALACEAAAD+//7/AAALACEAAAD9//7/AAAKACEAAAD9////AAAKACIAAAD9/wAAAAAKACIAAAD+////AAALACIAAAD+/wAAAAALACIAAAD//wAAAAALACIAAAAAAAAAAAALACIAAAABAAAAAAALACIAAAABAP//AAALACIAAAAAAP//AAALACIAAAD/////AAALACIAAAA=")
+tile_set = SubResource("TileSet_p7ya1")
+
+[node name="windows" parent="." instance=ExtResource("2_3bfvi")]
+texture_filter = 1
+scale = Vector2(0.7, 0.7)
+tile_map_data = PackedByteArray("AAD9/wAAAAAHACkAAAACAAAAAAAHACkAAAA=")
+
+[node name="floor" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wEAAAAOACIAAAACAAEAAAARACIAAAACAAIAAAARACMAAAD9/wIAAAAOACMAAAD//wIAAAAPACMAAAD+/wIAAAAQACMAAAAAAAIAAAAQACMAAAABAAIAAAAQACMAAAD+/wEAAAAPACIAAAD//wEAAAAPACIAAAAAAAEAAAAPACIAAAABAAEAAAAPACIAAAA=")
+tile_set = SubResource("TileSet_hrxwn")
+
+[node name="Player" parent="." instance=ExtResource("3_7xjiw")]
+position = Vector2(-8, 37)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
+
+[node name="l_light" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-38, -6)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yw84q")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.762356
+
+[node name="r_light" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, -6)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yw84q")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.0429239
+
+[node name="leave_house" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leave_house"]
+position = Vector2(-8, 44.5)
+shape = SubResource("RectangleShape2D_3xxo3")
+
+[connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]
