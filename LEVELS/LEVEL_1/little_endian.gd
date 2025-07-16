@@ -5,6 +5,13 @@ var house_2 = "res://LEVELS/LEVEL_1/inside_house_2.tscn"
 var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
 
+func set_leds() -> void:
+	$LED_2.set_frame_and_progress(2, 0.0)
+	$LED_3.set_frame_and_progress(3, 0.0)
+	$LED_1.play()
+	$LED_2.play()
+	$LED_3.play()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set player location
@@ -15,6 +22,8 @@ func _ready() -> void:
 		$Player.start(Global.player_location)
 	else:
 		$Player.start($StartPosition.position)
+	# Add a delay or start from different frame
+	set_leds()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://1ptksoeppc8j"]
+[gd_scene load_steps=10 format=4 uid="uid://1ptksoeppc8j"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/little_endian.gd" id="1_j410d"]
 [ext_resource type="PackedScene" uid="uid://bhsegbh3s6k8c" path="res://LEVELS/LEVEL_1/tile_map_layer.tscn" id="2_coe6v"]
 [ext_resource type="PackedScene" uid="uid://c8svlcdojdv4c" path="res://LEVELS/LEVEL_1/houses.tscn" id="3_vvk7m"]
 [ext_resource type="PackedScene" uid="uid://p0ye6xumm1pp" path="res://LEVELS/LEVEL_1/player.tscn" id="4_cwj72"]
+[ext_resource type="PackedScene" uid="uid://b44s1rtiwgdje" path="res://LEVELS/LEVEL_1/led.tscn" id="5_61rlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvhcb"]
 size = Vector2(4, 2)
@@ -49,9 +50,10 @@ position = Vector2(448, 311)
 shape = SubResource("RectangleShape2D_daanj")
 
 [node name="enter_brown_house" type="Area2D" parent="."]
+position = Vector2(448, 391)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_brown_house"]
-position = Vector2(448, 392)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_srjm5")
 
 [node name="Player" parent="." instance=ExtResource("4_cwj72")]
@@ -59,6 +61,16 @@ position = Vector2(360, 360)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(8, 8)
+
+[node name="LED_1" parent="." instance=ExtResource("5_61rlc")]
+position = Vector2(240, 312)
+frame_progress = 0.754142
+
+[node name="LED_2" parent="." instance=ExtResource("5_61rlc")]
+position = Vector2(240, 319)
+
+[node name="LED_3" parent="." instance=ExtResource("5_61rlc")]
+position = Vector2(240, 326)
 
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
