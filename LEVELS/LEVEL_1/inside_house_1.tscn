@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://qkdj0y5xciq2"]
+[gd_scene load_steps=10 format=4 uid="uid://qkdj0y5xciq2"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_k4pac"]
 [ext_resource type="PackedScene" uid="uid://c4e6esw3j7t65" path="res://LEVELS/LEVEL_1/house_1.tscn" id="2_qcrpp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjaxc6fi6pv3t" path="res://ASSETS/white_light_1.png" id="4_i6c7v"]
 [ext_resource type="Texture2D" uid="uid://cktmgosbcmhvj" path="res://ASSETS/white_light_2.png" id="5_nli47"]
 [ext_resource type="Texture2D" uid="uid://da7do43t4717t" path="res://ASSETS/white_light_3.png" id="6_egeap"]
+[ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="7_hpk3f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yw84q"]
 animations = [{
@@ -75,5 +76,11 @@ frame_progress = 0.0429239
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leave_house"]
 position = Vector2(-8, 44.5)
 shape = SubResource("RectangleShape2D_3xxo3")
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource("7_hpk3f")]
+offset_left = -61.0
+offset_top = -61.0
+offset_right = -659.0
+offset_bottom = -659.0
 
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]

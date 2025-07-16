@@ -16,6 +16,12 @@ func set_leds(parent_node: Node2D) -> void:
 		else:
 			frame = 3
 
+func transition() -> void:
+	# Play transition animation
+	$Player.speed = 0
+	$SceneTransitionRect.get_child(0).play("fade")
+	await get_tree().create_timer(0.5).timeout
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Set player location
@@ -44,6 +50,7 @@ func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 	if body == $Player:
 		# Save location for later
 		Global.player_location = $Player.position
+		await transition()
 		Global.goto_scene(house_1)
 
 func _on_enter_purple_house_body_entered(body: Node2D) -> void:
@@ -51,6 +58,7 @@ func _on_enter_purple_house_body_entered(body: Node2D) -> void:
 	if body == $Player:
 		# Save location for later
 		Global.player_location = $Player.position
+		await transition()
 		Global.goto_scene(house_2)
 
 func _on_enter_blue_house_body_entered(body: Node2D) -> void:
@@ -58,6 +66,7 @@ func _on_enter_blue_house_body_entered(body: Node2D) -> void:
 	if body == $Player:
 		# Save location for later
 		Global.player_location = $Player.position
+		await transition()
 		Global.goto_scene(house_3)
 
 func _on_enter_brown_house_body_entered(body: Node2D) -> void:
@@ -65,4 +74,5 @@ func _on_enter_brown_house_body_entered(body: Node2D) -> void:
 	if body == $Player:
 		# Save location for later
 		Global.player_location = $Player.position
+		await transition()
 		Global.goto_scene(house_4)

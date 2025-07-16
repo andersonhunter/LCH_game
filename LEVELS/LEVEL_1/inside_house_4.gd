@@ -1,17 +1,21 @@
 extends Node
 var leave_house = "res://LEVELS/LEVEL_1/little_endian.tscn"
 
+func transition() -> void:
+	# Play transition animation
+	$Player.speed = 0
+	$SceneTransitionRect.get_child(0).play("fade")
+	await get_tree().create_timer(0.5).timeout
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_leave_house_body_entered(body: Node2D) -> void:
 	if body == $Player:
-		print(leave_house)
+		await transition()
 		Global.goto_scene(leave_house)
