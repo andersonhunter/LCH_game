@@ -75,6 +75,15 @@ position = Vector2(240, 326)
 [node name="LED_4" parent="." instance=ExtResource("5_61rlc")]
 position = Vector2(240, 333)
 
+[node name="LED_5" parent="." instance=ExtResource("5_61rlc")]
+position = Vector2(240, 340)
+
+[node name="LED_6" parent="." instance=ExtResource("5_61rlc")]
+position = Vector2(240, 347)
+
+[node name="LED_7" parent="." instance=ExtResource("5_61rlc")]
+position = Vector2(240, 354)
+
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
