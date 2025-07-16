@@ -10,7 +10,6 @@ func goto_scene(path: String):
 func _deferred_goto_scene(path: String):
 	# Switch the current scene
 	current_scene.free()
-	print(path)
 	var s = ResourceLoader.load(path)
 	current_scene = s.instantiate()
 	get_tree().root.add_child(current_scene)

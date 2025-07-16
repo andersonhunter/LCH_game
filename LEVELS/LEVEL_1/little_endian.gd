@@ -9,7 +9,6 @@ func set_leds(parent_node: Node2D) -> void:
 	# Set the LED frames and begin playing
 	var frame: int = 3
 	for node in range(parent_node.get_child_count()):
-		print(frame)
 		parent_node.get_child(node).set_frame_and_progress(frame, 0.0)
 		parent_node.get_child(node).play()
 		if frame > 0:
