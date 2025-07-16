@@ -30,6 +30,10 @@ func _ready() -> void:
 	set_leds($LED_SET_2)
 	set_leds($LED_SET_3)
 	set_leds($LED_SET_4)
+	set_leds($LED_SET_5)
+	set_leds($LED_SET_6)
+	set_leds($LED_SET_7)
+	set_leds($LED_SET_8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

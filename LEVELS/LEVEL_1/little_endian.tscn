@@ -122,6 +122,66 @@ position = Vector2(240, 420)
 [node name="LED_4" parent="LED_SET_4" instance=ExtResource("5_61rlc")]
 position = Vector2(240, 428)
 
+[node name="LED_SET_5" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_5" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 308)
+frame_progress = 0.0
+
+[node name="LED_2" parent="LED_SET_5" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 316)
+
+[node name="LED_3" parent="LED_SET_5" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 324)
+
+[node name="LED_4" parent="LED_SET_5" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 332)
+
+[node name="LED_SET_6" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_6" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 340)
+frame_progress = 0.0
+
+[node name="LED_2" parent="LED_SET_6" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 348)
+
+[node name="LED_3" parent="LED_SET_6" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 356)
+
+[node name="LED_4" parent="LED_SET_6" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 364)
+
+[node name="LED_SET_7" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_7" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 372)
+frame_progress = 0.0
+
+[node name="LED_2" parent="LED_SET_7" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 380)
+
+[node name="LED_3" parent="LED_SET_7" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 388)
+
+[node name="LED_4" parent="LED_SET_7" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 396)
+
+[node name="LED_SET_8" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_8" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 404)
+frame_progress = 0.0
+
+[node name="LED_2" parent="LED_SET_8" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 412)
+
+[node name="LED_3" parent="LED_SET_8" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 420)
+
+[node name="LED_4" parent="LED_SET_8" instance=ExtResource("5_61rlc")]
+position = Vector2(480, 428)
+
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
