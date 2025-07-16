@@ -5,22 +5,17 @@ var house_2 = "res://LEVELS/LEVEL_1/inside_house_2.tscn"
 var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
 
-func set_leds() -> void:
+func set_leds(parent_node: Node2D) -> void:
 	# Set the LED frames and begin playing
-	$LED_1.set_frame_and_progress(6, 0.0)
-	$LED_2.set_frame_and_progress(5, 0.0)
-	$LED_3.set_frame_and_progress(4, 0.0)
-	$LED_4.set_frame_and_progress(3, 0.0)
-	$LED_5.set_frame_and_progress(2, 0.0)
-	$LED_6.set_frame_and_progress(1, 0.0)
-	$LED_7.set_frame_and_progress(0, 0.0)
-	$LED_1.play()
-	$LED_2.play()
-	$LED_3.play()
-	$LED_4.play()
-	$LED_5.play()
-	$LED_6.play()
-	$LED_7.play()
+	var frame: int = 3
+	for node in range(parent_node.get_child_count()):
+		print(frame)
+		parent_node.get_child(node).set_frame_and_progress(frame, 0.0)
+		parent_node.get_child(node).play()
+		if frame > 0:
+			frame -= 1
+		else:
+			frame = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,7 +27,10 @@ func _ready() -> void:
 		$Player.start(Global.player_location)
 	else:
 		$Player.start($StartPosition.position)
-	set_leds()
+	set_leds($LED_SET_1)
+	set_leds($LED_SET_2)
+	set_leds($LED_SET_3)
+	set_leds($LED_SET_4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -62,27 +62,65 @@ position = Vector2(360, 360)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(8, 8)
 
-[node name="LED_1" parent="." instance=ExtResource("5_61rlc")]
-position = Vector2(240, 312)
-frame_progress = 0.754142
+[node name="LED_SET_1" type="Node2D" parent="."]
 
-[node name="LED_2" parent="." instance=ExtResource("5_61rlc")]
-position = Vector2(240, 319)
+[node name="LED_1" parent="LED_SET_1" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 308)
+frame_progress = 0.0
 
-[node name="LED_3" parent="." instance=ExtResource("5_61rlc")]
-position = Vector2(240, 326)
+[node name="LED_2" parent="LED_SET_1" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 316)
 
-[node name="LED_4" parent="." instance=ExtResource("5_61rlc")]
-position = Vector2(240, 333)
+[node name="LED_3" parent="LED_SET_1" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 324)
 
-[node name="LED_5" parent="." instance=ExtResource("5_61rlc")]
+[node name="LED_4" parent="LED_SET_1" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 332)
+
+[node name="LED_SET_2" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_2" instance=ExtResource("5_61rlc")]
 position = Vector2(240, 340)
+frame_progress = 0.0
 
-[node name="LED_6" parent="." instance=ExtResource("5_61rlc")]
-position = Vector2(240, 347)
+[node name="LED_2" parent="LED_SET_2" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 348)
 
-[node name="LED_7" parent="." instance=ExtResource("5_61rlc")]
-position = Vector2(240, 354)
+[node name="LED_3" parent="LED_SET_2" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 356)
+
+[node name="LED_4" parent="LED_SET_2" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 364)
+
+[node name="LED_SET_3" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_3" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 372)
+frame_progress = 0.0
+
+[node name="LED_2" parent="LED_SET_3" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 380)
+
+[node name="LED_3" parent="LED_SET_3" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 388)
+
+[node name="LED_4" parent="LED_SET_3" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 396)
+
+[node name="LED_SET_4" type="Node2D" parent="."]
+
+[node name="LED_1" parent="LED_SET_4" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 404)
+frame_progress = 0.0
+
+[node name="LED_2" parent="LED_SET_4" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 412)
+
+[node name="LED_3" parent="LED_SET_4" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 420)
+
+[node name="LED_4" parent="LED_SET_4" instance=ExtResource("5_61rlc")]
+position = Vector2(240, 428)
 
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
