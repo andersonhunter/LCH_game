@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyldiag4kvln1"]
+
+[ext_resource type="Texture2D" uid="uid://bdntf5kt3oa32" path="res://ASSETS/SPRITES/bat_idle_1.png" id="1_5wbld"]
+[ext_resource type="Texture2D" uid="uid://383gulfudhem" path="res://ASSETS/SPRITES/bat_idle_2.png" id="2_rjjwg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxpg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5wbld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rjjwg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Bat" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vxpg3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.322705

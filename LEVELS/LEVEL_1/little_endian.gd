@@ -4,6 +4,10 @@ var house_1 = "res://LEVELS/LEVEL_1/inside_house_1.tscn"
 var house_2 = "res://LEVELS/LEVEL_1/inside_house_2.tscn"
 var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
+var bat_path = "res://LEVELS/LEVEL_1/bat.tscn"
+
+var speed = Global.speed
+#var bat
 
 func set_leds(parent_node: Node2D) -> void:
 	# Set the LED frames and begin playing
@@ -40,10 +44,22 @@ func _ready() -> void:
 	set_leds($LED_SET_6)
 	set_leds($LED_SET_7)
 	set_leds($LED_SET_8)
+	#if Global.has_bat:
+		#ResourceLoader.load_threaded_request(bat_path)
+		#bat = ResourceLoader.load_threaded_get(bat_path).instantiate()
+		#get_tree().root.get_child(1).add_child(bat)
+		#bat = get_node("Bat")
+		#bat.hide()
+		#bat.position = $Player.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	# Show bat when player moves
+	#if $Player.get_real_velocity() != Vector2.ZERO && !bat.visible:
+		#$Bat.show()
+	#if bat:
+		#bat.position = Global.position_array[20]
 
 func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 	# Player is entering pink house
