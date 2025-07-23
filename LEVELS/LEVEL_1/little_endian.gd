@@ -36,6 +36,7 @@ func _ready() -> void:
 		$Player.start(Global.player_location)
 	else:
 		$Player.start($StartPosition.position)
+	# Start playing LED animations
 	set_leds($LED_SET_1)
 	set_leds($LED_SET_2)
 	set_leds($LED_SET_3)
@@ -44,28 +45,20 @@ func _ready() -> void:
 	set_leds($LED_SET_6)
 	set_leds($LED_SET_7)
 	set_leds($LED_SET_8)
-	#if Global.has_bat:
-		#ResourceLoader.load_threaded_request(bat_path)
-		#bat = ResourceLoader.load_threaded_get(bat_path).instantiate()
-		#get_tree().root.get_child(1).add_child(bat)
-		#bat = get_node("Bat")
-		#bat.hide()
-		#bat.position = $Player.position
+	# Set up bgm
+	$bgm.volume_db = Global.music_volume
+	$bgm.play(Global.music_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	# Show bat when player moves
-	#if $Player.get_real_velocity() != Vector2.ZERO && !bat.visible:
-		#$Bat.show()
-	#if bat:
-		#bat.position = Global.position_array[20]
 
 func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 	# Player is entering pink house
 	if body == $Player:
 		# Save location for later
 		Global.player_location = $Player.position
+		Global.music_pos = $bgm.get_playback_position()
 		await transition()
 		Global.goto_scene(house_1)
 
