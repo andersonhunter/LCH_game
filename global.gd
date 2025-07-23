@@ -6,6 +6,8 @@ var current_scene = null
 var player_location = null
 var position_array: Array  # Hold player's last 100 positions
 var has_bat: bool = true
+var music_pos: float = 0.
+@export var music_volume: float = -6.0
 
 func goto_scene(path: String):
 	# Call goto scene with deferred callback to allow things to finish
