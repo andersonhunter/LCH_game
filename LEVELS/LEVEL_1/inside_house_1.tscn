@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cktmgosbcmhvj" path="res://ASSETS/white_light_2.png" id="5_nli47"]
 [ext_resource type="Texture2D" uid="uid://da7do43t4717t" path="res://ASSETS/white_light_3.png" id="6_egeap"]
 [ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="7_hpk3f"]
-[ext_resource type="AudioStream" uid="uid://bdxo41ksxykb" path="res://ASSETS/MUSIC/Little Endian Overworld Theme.mp3" id="8_mjdb8"]
+[ext_resource type="AudioStream" uid="uid://dn0tqsb6qvups" path="res://ASSETS/MUSIC/House Theme.mp3" id="8_r1j50"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yw84q"]
 animations = [{
@@ -85,7 +85,7 @@ offset_right = -659.0
 offset_bottom = -659.0
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_mjdb8")
+stream = ExtResource("8_r1j50")
 parameters/looping = true
 
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]

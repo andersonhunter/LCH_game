@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://y6edtms8t7m1"]
+[gd_scene load_steps=16 format=4 uid="uid://y6edtms8t7m1"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_qxd4x"]
 [ext_resource type="Texture2D" uid="uid://dymkignoxtbc8" path="res://ASSETS/map_1_tileset.png" id="2_3ci85"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://84eargmu77d7" path="res://ASSETS/brown_light_2.png" id="5_e6erv"]
 [ext_resource type="Texture2D" uid="uid://bfouep34ergwn" path="res://ASSETS/brown_light_3.png" id="6_abfdo"]
 [ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="8_m2k2p"]
+[ext_resource type="AudioStream" uid="uid://dn0tqsb6qvups" path="res://ASSETS/MUSIC/House Theme.mp3" id="9_1akqi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imubs"]
 texture = ExtResource("2_3ci85")
@@ -268,5 +269,8 @@ offset_left = -64.0
 offset_top = -64.0
 offset_right = -656.0
 offset_bottom = -656.0
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_1akqi")
 
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]

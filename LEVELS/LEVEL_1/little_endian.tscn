@@ -190,7 +190,6 @@ offset_bottom = -5.0
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_d6i20")
-volume_db = -12.0
 parameters/looping = true
 
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]

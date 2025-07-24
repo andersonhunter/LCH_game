@@ -7,7 +7,6 @@ var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
 var bat_path = "res://LEVELS/LEVEL_1/bat.tscn"
 
 var speed = Global.speed
-#var bat
 
 func set_leds(parent_node: Node2D) -> void:
 	# Set the LED frames and begin playing
@@ -24,6 +23,7 @@ func transition() -> void:
 	# Play transition animation
 	$Player.speed = 0
 	$SceneTransitionRect.get_child(0).play("fade")
+	$bgm.stop()
 	await get_tree().create_timer(0.5).timeout
 
 # Called when the node enters the scene tree for the first time.
