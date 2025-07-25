@@ -48,11 +48,12 @@ func _ready() -> void:
 	# Set up bgm
 	$bgm.volume_db = Global.music_volume
 	$bgm.play(Global.music_pos)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
 func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 	# Player is entering pink house
 	if body == $Player:
