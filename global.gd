@@ -1,6 +1,6 @@
 extends Node
 
-@export var speed = 100
+@export var speed = 75
 
 var current_scene = null
 var player_location = null

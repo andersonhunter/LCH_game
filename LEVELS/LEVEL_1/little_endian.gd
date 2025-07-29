@@ -5,6 +5,7 @@ var house_2 = "res://LEVELS/LEVEL_1/inside_house_2.tscn"
 var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
 var bat_path = "res://LEVELS/LEVEL_1/bat.tscn"
+var frameCount = 0
 
 var speed = Global.speed
 
@@ -48,11 +49,11 @@ func _ready() -> void:
 	# Set up bgm
 	$bgm.volume_db = Global.music_volume
 	$bgm.play(Global.music_pos)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
 	
 func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 	# Player is entering pink house
