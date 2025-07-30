@@ -90,3 +90,10 @@ script = ExtResource("12_asbbt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_b8bxy")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, -13)
+collision_mask = 5
+hit_from_inside = true
+collide_with_areas = true

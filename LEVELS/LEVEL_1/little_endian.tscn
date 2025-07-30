@@ -64,7 +64,7 @@ shape = SubResource("RectangleShape2D_srjm5")
 position = Vector2(344, 320)
 script = ExtResource("4_xjjic")
 
-[node name="mold_mite" parent="Mite1" instance=ExtResource("8_47f8w")]
+[node name="mold_mite_1" parent="Mite1" instance=ExtResource("8_47f8w")]
 
 [node name="Player" parent="." instance=ExtResource("4_cwj72")]
 position = Vector2(360, 360)
