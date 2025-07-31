@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed = Global.speed
 var screen_size
 var bat = preload("res://LEVELS/LEVEL_1/bat.tscn").instantiate()
+signal mite_1_collide
 
 func start(pos):
 	position = pos
@@ -31,14 +32,16 @@ func _process(delta: float) -> void:
 		)
 	# Perform raycasting logic
 	if input != Vector2.ZERO:
+		# Moving, so rotate raycast
 		$RayCast2D.rotation_degrees = rad_to_deg(input.angle()) + 90.
 	if $RayCast2D.is_colliding():
+		# Collision detection for ray
 		var collider = $RayCast2D.get_collider()
 		if collider.name == "mold_mite_1":
 			# Maybe add a switch statement function for collisions?
 			# match (collider.name) case "mold_mite_1": startConversation
 			# Also need rotation of raycast
-			pass
+			mite_1_collide.emit()
 	velocity = input * speed
 	move_and_slide()
 	if get_real_velocity() != Vector2.ZERO:

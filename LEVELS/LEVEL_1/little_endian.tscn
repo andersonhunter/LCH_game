@@ -206,3 +206,4 @@ parameters/looping = true
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
 [connection signal="body_entered" from="enter_brown_house" to="." method="_on_enter_brown_house_body_entered"]
+[connection signal="mite_1_collide" from="Player" to="Mite1" method="_on_player_mite_1_collide"]
