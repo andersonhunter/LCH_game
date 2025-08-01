@@ -53,16 +53,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-#func _on_enter_pink_house_body_entered(body: Node2D) -> void:
-	## Player is entering pink house
-	#if body == $Player:
-		### Save location for later
-		##Global.player_location = $Player.position
-		##Global.music_pos = $bgm.get_playback_position()
-		##await transition()
-		##Global.goto_scene(house_1)
-		#get_tree().paused = true
 
 func _on_enter_purple_house_body_entered(body: Node2D) -> void:
 	# Player is entering the purple house
@@ -87,3 +77,12 @@ func _on_enter_brown_house_body_entered(body: Node2D) -> void:
 		Global.player_location = $Player.position
 		await transition()
 		Global.goto_scene(house_4)
+
+func _on_enter_pink_house_body_entered(body: Node2D) -> void:
+		# Player is entering pink house
+	if body == $Player:
+		## Save location for later
+		Global.player_location = $Player.position
+		Global.music_pos = $bgm.get_playback_position()
+		await transition()
+		Global.goto_scene(house_1)
