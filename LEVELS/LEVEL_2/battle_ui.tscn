@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bspb36dddjtev"]
+[gd_scene load_steps=2 format=3 uid="uid://bspb36dddjtev"]
+
+[ext_resource type="FontFile" uid="uid://c7w1nb10xnqaq" path="res://tinypixel/tinypixel/tinypixel.otf" id="1_ryivl"]
 
 [node name="battleUI" type="Control"]
 layout_mode = 3
@@ -47,15 +49,20 @@ grow_vertical = 2
 columns = 2
 
 [node name="attack" type="Button" parent="GridContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_ryivl")
+theme_override_font_sizes/font_size = 7
+text = "! Attack"
 flat = true
 alignment = 0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GridContainer/attack"]
 
 [node name="defend" type="Button" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_ryivl")
+theme_override_font_sizes/font_size = 7
+text = "! Defend"
