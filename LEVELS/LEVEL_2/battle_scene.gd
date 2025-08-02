@@ -1,15 +1,23 @@
 extends Node2D
 var enemyStats = {
 	"slime": {
-		"health": 3,
+		"base health": 3,
+		"current health": 3,
 		"attack": 1,
 		"defense": 1,
 		"speed": 1
 	}
 }
+var sceneCharacters: Dictionary # {char: {stats}...}
+var turnQueue: Array # [char: Node2D, char: Node2D, ...]
 
-var enemies: Array
-var turnQueue: Array
+func setHealthBar(unit):
+	# Sets the unit's health bar
+	var healthBar: ProgressBar = unit.get_node("ProgressBar")
+	healthBar.max_value = sceneCharacters[unit]["base health"]
+	healthBar.value = sceneCharacters[unit]["current health"]
+	var healthFlavor: Label = unit.get_node("Label")
+	healthFlavor.text = "HP: %d/%d" % [healthBar.value, healthBar.max_value]
 
 var player = preload("res://LEVELS/LEVEL_2/player_battle.tscn").instantiate()
 
@@ -21,34 +29,38 @@ func addEnemies():
 			var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
 			var parent := $enemies.get_children()[n]
 			parent.add_child(enemy)
-			enemies.push_back(enemy)
+			sceneCharacters[enemy] = enemyStats[enemy.name]
+			turnQueue.push_back(enemy)
+			setHealthBar(enemy)
 	else:
 		for n in range(0, numEnemies):
 			var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
 			var parent := $enemies.get_children()[n]
 			parent.add_child(enemy)
-			enemies.push_back(enemy)
+			sceneCharacters[enemy] = enemyStats[enemy.name]
+			turnQueue.push_back(enemy)
+			setHealthBar(enemy)
 
 func sortTurnQueue():
 	# Sort the turn queue based on speed
-	enemies.sort_custom(
-		func(a, b): return enemyStats[a.name]["speed"] > enemyStats[b.name]["speed"]
+	turnQueue.sort_custom(
+		func(a, b): return sceneCharacters[a]["speed"] > sceneCharacters[b]["speed"]
 		)
-	turnQueue = enemies.duplicate()
-	for i in range(turnQueue.size()):
-		if enemyStats[turnQueue[i].name]["speed"] <= Global.playerStats["speed"]:
-			turnQueue.insert(i, player)
-			break
-		elif i == turnQueue.size() - 1:
-			turnQueue.push_back(player)
 
 func playerTurn():
-	await $battleUI.accept_event()
+	pass
 
 func _ready() -> void:
 	get_node("player").add_child(player)
+	sceneCharacters[player] = Global.playerStats
+	turnQueue.push_back(player)
+	setHealthBar(player)
 	addEnemies()
 	sortTurnQueue()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		print(event.as_text())
 
 func _on_attack_pressed() -> void:
 	print("attack!")

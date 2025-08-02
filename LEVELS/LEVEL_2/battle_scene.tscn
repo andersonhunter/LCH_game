@@ -30,13 +30,13 @@ script = ExtResource("1_8v7uc")
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="enemy1" type="Node2D" parent="enemies"]
-position = Vector2(0, -32)
+position = Vector2(0, -56)
 
 [node name="enemy2" type="Node2D" parent="enemies"]
-position = Vector2(32, -24)
+position = Vector2(32, -48)
 
 [node name="enemy3" type="Node2D" parent="enemies"]
-position = Vector2(-32, -24)
+position = Vector2(-32, -48)
 
 [node name="battleUI" parent="." instance=ExtResource("2_ewtja")]
 offset_left = -80.0
