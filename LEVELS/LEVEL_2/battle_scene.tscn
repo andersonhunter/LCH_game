@@ -18,13 +18,13 @@ position = Vector2(32, -24)
 position = Vector2(-32, -24)
 
 [node name="battleUI" parent="." instance=ExtResource("2_ewtja")]
-offset_left = -40.0
-offset_top = 11.0
-offset_right = 40.0
-offset_bottom = 51.0
+offset_left = -80.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = 88.0
 scale = Vector2(1, 0.760001)
 
 [node name="player" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(8, 8)
+zoom = Vector2(4, 4)
