@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://hllr8ttn3xdo"]
+
+[ext_resource type="Texture2D" uid="uid://ctbt7xcjlq6qe" path="res://ASSETS/SPRITES/alien_battle.png" id="1_qpmyf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jija5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qpmyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="playerBattle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jija5")

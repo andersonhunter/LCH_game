@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://bw85op1we8yn3"]
+[gd_scene load_steps=2 format=3 uid="uid://bw85op1we8yn3"]
+
+[ext_resource type="Script" path="res://LEVELS/LEVEL_2/battle_scene.gd" id="1_8v7uc"]
 
 [node name="battleScene" type="Node2D"]
+script = ExtResource("1_8v7uc")
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="enemy1" type="Node2D" parent="enemies"]
+position = Vector2(32, -32)
+
+[node name="enemy2" type="Node2D" parent="enemies"]
+position = Vector2(0, -32)
+
+[node name="enemy3" type="Node2D" parent="enemies"]
+position = Vector2(-32, -32)
+
+[node name="player" type="Node2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(8, 8)
