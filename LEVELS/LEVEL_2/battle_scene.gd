@@ -11,11 +11,11 @@ var enemyStats = {
 var sceneCharacters: Dictionary # {char: {stats}...}
 var turnQueue: Array # [char: Node2D, char: Node2D, ...]
 
-func setHealthBar(unit):
+func setHealthBar(unit, health, maxHealth):
 	# Sets the unit's health bar
 	var healthBar: ProgressBar = unit.get_node("ProgressBar")
-	healthBar.max_value = sceneCharacters[unit]["base health"]
-	healthBar.value = sceneCharacters[unit]["current health"]
+	healthBar.max_value = maxHealth
+	healthBar.value = health
 	var healthFlavor: Label = unit.get_node("Label")
 	healthFlavor.text = "HP: %d/%d" % [healthBar.value, healthBar.max_value]
 
@@ -31,7 +31,7 @@ func addEnemies():
 			parent.add_child(enemy)
 			sceneCharacters[enemy] = enemyStats[enemy.name]
 			turnQueue.push_back(enemy)
-			setHealthBar(enemy)
+			setHealthBar(enemy, sceneCharacters[enemy]["current health"], sceneCharacters[enemy]["base health"])
 	else:
 		for n in range(0, numEnemies):
 			var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
@@ -39,7 +39,7 @@ func addEnemies():
 			parent.add_child(enemy)
 			sceneCharacters[enemy] = enemyStats[enemy.name]
 			turnQueue.push_back(enemy)
-			setHealthBar(enemy)
+			setHealthBar(enemy, sceneCharacters[enemy]["current health"], sceneCharacters[enemy]["base health"])
 
 func sortTurnQueue():
 	# Sort the turn queue based on speed
@@ -54,7 +54,7 @@ func _ready() -> void:
 	get_node("player").add_child(player)
 	sceneCharacters[player] = Global.playerStats
 	turnQueue.push_back(player)
-	setHealthBar(player)
+	setHealthBar(player, Global.playerStats["current health"], Global.playerStats["base health"])
 	addEnemies()
 	sortTurnQueue()
 
