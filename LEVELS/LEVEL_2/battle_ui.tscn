@@ -91,3 +91,10 @@ theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
 theme_override_styles/hover = ExtResource("2_qe2b0")
 text = "! Defend"
 flat = true
+
+[node name="textBox" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 152.0
+offset_bottom = 72.0
