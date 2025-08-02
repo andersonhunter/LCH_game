@@ -42,7 +42,16 @@ func sortTurnQueue():
 		elif i == turnQueue.size() - 1:
 			turnQueue.push_back(player)
 
+func playerTurn():
+	await $battleUI.accept_event()
+
 func _ready() -> void:
 	get_node("player").add_child(player)
 	addEnemies()
 	sortTurnQueue()
+
+func _on_attack_pressed() -> void:
+	print("attack!")
+
+func _on_defend_pressed() -> void:
+	print("defend!")
