@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw85op1we8yn3"]
+[gd_scene load_steps=4 format=3 uid="uid://bw85op1we8yn3"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/battle_scene.gd" id="1_8v7uc"]
 [ext_resource type="PackedScene" uid="uid://bspb36dddjtev" path="res://LEVELS/LEVEL_2/battle_ui.tscn" id="2_ewtja"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_woydv"]
+resource_local_to_scene = true
+resource_name = "battleOutline"
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.647059, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+shadow_color = Color(1, 1, 1, 0)
+anti_aliasing = false
 
 [node name="battleScene" type="Node2D"]
 script = ExtResource("1_8v7uc")
@@ -24,7 +45,22 @@ offset_right = 80.0
 offset_bottom = 88.0
 scale = Vector2(1, 0.760001)
 
+[node name="attack" parent="battleUI/GridContainer" index="0"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_woydv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_woydv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_woydv")
+
+[node name="defend" parent="battleUI/GridContainer" index="1"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_woydv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_woydv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_woydv")
+
 [node name="player" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[connection signal="pressed" from="battleUI/GridContainer/attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="battleUI/GridContainer/defend" to="." method="_on_defend_pressed"]
+
+[editable path="battleUI"]
