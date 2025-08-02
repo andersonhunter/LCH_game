@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://hllr8ttn3xdo"]
+[gd_scene load_steps=6 format=3 uid="uid://hllr8ttn3xdo"]
 
 [ext_resource type="Texture2D" uid="uid://ctbt7xcjlq6qe" path="res://ASSETS/SPRITES/alien_battle.png" id="1_qpmyf"]
+[ext_resource type="StyleBox" uid="uid://bawl615u4sc2y" path="res://styleboxes/healthBarBackground.tres" id="2_re54a"]
+[ext_resource type="StyleBox" uid="uid://djoe5nqopuinu" path="res://styleboxes/healthBarFill.tres" id="3_rnp47"]
+[ext_resource type="FontFile" uid="uid://c7w1nb10xnqaq" path="res://tinypixel/tinypixel/tinypixel.otf" id="4_r3gi6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jija5"]
 animations = [{
@@ -18,3 +21,31 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jija5")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = -13.0
+offset_top = -16.0
+offset_right = -9.0
+offset_bottom = 11.0
+rotation = -1.5708
+theme_override_styles/background = ExtResource("2_re54a")
+theme_override_styles/fill = ExtResource("3_rnp47")
+step = 1.0
+allow_greater = true
+allow_lesser = true
+fill_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -13.0
+offset_top = -16.0
+offset_right = 27.0
+offset_bottom = 7.0
+scale = Vector2(0.68, 0.28)
+theme_override_fonts/font = ExtResource("4_r3gi6")
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 0
