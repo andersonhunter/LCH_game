@@ -57,6 +57,7 @@ func _ready() -> void:
 	setHealthBar(player, Global.playerStats["current health"], Global.playerStats["base health"])
 	addEnemies()
 	sortTurnQueue()
+	$battleUI/textBox.hide()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
