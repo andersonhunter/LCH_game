@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw85op1we8yn3"]
+[gd_scene load_steps=3 format=3 uid="uid://bw85op1we8yn3"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/battle_scene.gd" id="1_8v7uc"]
+[ext_resource type="PackedScene" uid="uid://bspb36dddjtev" path="res://LEVELS/LEVEL_2/battle_ui.tscn" id="2_ewtja"]
 
 [node name="battleScene" type="Node2D"]
 script = ExtResource("1_8v7uc")
@@ -16,8 +17,14 @@ position = Vector2(32, -24)
 [node name="enemy3" type="Node2D" parent="enemies"]
 position = Vector2(-32, -24)
 
+[node name="battleUI" parent="." instance=ExtResource("2_ewtja")]
+offset_left = -40.0
+offset_top = 11.0
+offset_right = 40.0
+offset_bottom = 51.0
+scale = Vector2(1, 0.760001)
+
 [node name="player" type="Node2D" parent="."]
-position = Vector2(0, 8)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(8, 8)
