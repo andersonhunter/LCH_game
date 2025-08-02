@@ -8,13 +8,13 @@ script = ExtResource("1_8v7uc")
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="enemy1" type="Node2D" parent="enemies"]
-position = Vector2(32, -32)
-
-[node name="enemy2" type="Node2D" parent="enemies"]
 position = Vector2(0, -32)
 
+[node name="enemy2" type="Node2D" parent="enemies"]
+position = Vector2(32, -24)
+
 [node name="enemy3" type="Node2D" parent="enemies"]
-position = Vector2(-32, -32)
+position = Vector2(-32, -24)
 
 [node name="player" type="Node2D" parent="."]
 position = Vector2(0, 8)
