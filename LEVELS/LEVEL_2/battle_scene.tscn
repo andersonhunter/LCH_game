@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/battle_scene.gd" id="1_8v7uc"]
 [ext_resource type="PackedScene" uid="uid://bspb36dddjtev" path="res://LEVELS/LEVEL_2/battle_ui.tscn" id="2_ewtja"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_woydv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pe7q"]
 resource_local_to_scene = true
 resource_name = "battleOutline"
 content_margin_left = 4.0
@@ -45,22 +45,22 @@ offset_right = 80.0
 offset_bottom = 88.0
 scale = Vector2(1, 0.760001)
 
-[node name="attack" parent="battleUI/GridContainer" index="0"]
-theme_override_styles/focus = SubResource("StyleBoxFlat_woydv")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_woydv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_woydv")
+[node name="attack" parent="battleUI/commands" index="0"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pe7q")
 
-[node name="defend" parent="battleUI/GridContainer" index="1"]
-theme_override_styles/focus = SubResource("StyleBoxFlat_woydv")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_woydv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_woydv")
+[node name="defend" parent="battleUI/commands" index="1"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pe7q")
 
 [node name="player" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[connection signal="pressed" from="battleUI/GridContainer/attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="battleUI/GridContainer/defend" to="." method="_on_defend_pressed"]
+[connection signal="pressed" from="battleUI/commands/attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="battleUI/commands/defend" to="." method="_on_defend_pressed"]
 
 [editable path="battleUI"]

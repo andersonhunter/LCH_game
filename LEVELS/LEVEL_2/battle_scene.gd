@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 		print(event.as_text())
 
 func _on_attack_pressed() -> void:
-	print("attack!")
+	pass
 
 func _on_defend_pressed() -> void:
-	print("defend!")
+	pass # Replace with function body.
