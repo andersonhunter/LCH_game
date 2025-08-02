@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bspb36dddjtev"]
+[gd_scene load_steps=3 format=3 uid="uid://bspb36dddjtev"]
 
 [ext_resource type="FontFile" uid="uid://c7w1nb10xnqaq" path="res://tinypixel/tinypixel/tinypixel.otf" id="1_ryivl"]
+[ext_resource type="StyleBox" uid="uid://kxqim2qiavxv" path="res://styleboxes/battle_ui.tres" id="2_qe2b0"]
 
 [node name="battleUI" type="Control"]
 layout_mode = 3
@@ -53,16 +54,40 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
+theme_override_colors/font_hover_color = Color(0, 0.648447, 1.92523e-07, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("1_ryivl")
 theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = ExtResource("2_qe2b0")
+theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
+theme_override_styles/hover = ExtResource("2_qe2b0")
 text = "! Attack"
 flat = true
 alignment = 0
 
 [node name="defend" type="Button" parent="GridContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 6
+theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("1_ryivl")
 theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = ExtResource("2_qe2b0")
+theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
+theme_override_styles/hover = ExtResource("2_qe2b0")
 text = "! Defend"
+flat = true
