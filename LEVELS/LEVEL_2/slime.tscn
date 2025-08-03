@@ -1,15 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxwpm3b3op5dd"]
+[gd_scene load_steps=10 format=3 uid="uid://dxwpm3b3op5dd"]
 
 [ext_resource type="Texture2D" uid="uid://4ar22cpymns1" path="res://ASSETS/SPRITES/ENEMIES/slime_1.png" id="1_30v3q"]
 [ext_resource type="StyleBox" uid="uid://bawl615u4sc2y" path="res://styleboxes/healthBarBackground.tres" id="2_dbxxd"]
 [ext_resource type="StyleBox" uid="uid://djoe5nqopuinu" path="res://styleboxes/healthBarFill.tres" id="3_vh7cc"]
 [ext_resource type="FontFile" uid="uid://c7w1nb10xnqaq" path="res://tinypixel/tinypixel/tinypixel.otf" id="4_rkbbs"]
+[ext_resource type="Texture2D" uid="uid://dwfvijq1acnip" path="res://ASSETS/SPRITES/ENEMIES/targeted_2.png" id="5_03myp"]
+[ext_resource type="Texture2D" uid="uid://dddyye6cug8ov" path="res://ASSETS/SPRITES/ENEMIES/targeted.png" id="5_4u70f"]
+[ext_resource type="Texture2D" uid="uid://cpnjq1sugt7xx" path="res://ASSETS/SPRITES/ENEMIES/targeted_1.png" id="6_r2g4c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjpgl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_30v3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jdd3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_03myp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r2g4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4u70f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r2g4c")
 }],
 "loop": true,
 "name": &"default",
@@ -46,3 +69,10 @@ theme_override_fonts/font = ExtResource("4_rkbbs")
 theme_override_font_sizes/font_size = 7
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="targeted" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_3jdd3")
+frame = 2
+frame_progress = 0.355242
