@@ -24,22 +24,23 @@ var player = preload("res://LEVELS/LEVEL_2/player_battle.tscn").instantiate()
 func addEnemies():
 	# Adds enemies to scene depending on how many enemies spawn [1..3]
 	var numEnemies = RandomNumberGenerator.new().randi_range(1, 3)
-	if numEnemies == 2:
-		for n in range(1, 3):
-			var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
-			var parent := $enemies.get_children()[n]
-			parent.add_child(enemy)
-			sceneCharacters[enemy] = enemyStats[enemy.name]
-			turnQueue.push_back(enemy)
-			setHealthBar(enemy, sceneCharacters[enemy]["current health"], sceneCharacters[enemy]["base health"])
-	else:
-		for n in range(0, numEnemies):
-			var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
-			var parent := $enemies.get_children()[n]
-			parent.add_child(enemy)
-			sceneCharacters[enemy] = enemyStats[enemy.name]
-			turnQueue.push_back(enemy)
-			setHealthBar(enemy, sceneCharacters[enemy]["current health"], sceneCharacters[enemy]["base health"])
+	# Remove superfluous enemies
+	match numEnemies:
+		1:
+			$enemies/enemy2.queue_free()
+			$enemies/enemy3.queue_free()
+		2:
+			$enemies/enemy1.queue_free()
+	for parent in $enemies.get_children():
+		var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
+		parent.add_child(enemy)
+		sceneCharacters[enemy] = enemyStats[enemy.name]
+		turnQueue.push_back(enemy)
+		setHealthBar(
+			enemy, 
+			sceneCharacters[enemy]["current health"], 
+			sceneCharacters[enemy]["base health"]
+			)
 
 func sortTurnQueue():
 	# Sort the turn queue based on speed
@@ -64,7 +65,7 @@ func _input(event: InputEvent) -> void:
 		print(event.as_text())
 
 func _on_attack_pressed() -> void:
-	pass
+	var enemies = $enemies.get_children()
 
 func _on_defend_pressed() -> void:
 	pass # Replace with function body.
