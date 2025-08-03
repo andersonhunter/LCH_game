@@ -1,11 +1,14 @@
 extends Node2D
+
+signal attack
+
 var enemyStats = {
 	"slime": {
 		"base health": 3,
 		"current health": 3,
 		"attack": 1,
 		"defense": 1,
-		"speed": 1
+		"speed": 2
 	}
 }
 var sceneCharacters: Dictionary # {char: {stats}...}
@@ -49,7 +52,16 @@ func sortTurnQueue():
 		)
 
 func playerTurn():
-	pass
+	$battleUI/textBox.text = ""
+	$battleUI/textBox.hide()
+	$battleUI/commands.show()
+	$battleUI/commands/attack.grab_focus()
+	await attack
+	$battleUI/commands.hide()
+	$battleUI/textBox.text = "Attack who?"
+	$battleUI/textBox.show()
+	$enemies.get_children()[0].get_children()[0].get_node("targeted").show()
+	$enemies.get_children()[0].get_children()[0].get_node("targeted").play()
 
 func _ready() -> void:
 	get_node("player").add_child(player)
@@ -58,14 +70,11 @@ func _ready() -> void:
 	setHealthBar(player, Global.playerStats["current health"], Global.playerStats["base health"])
 	addEnemies()
 	sortTurnQueue()
-	$battleUI/textBox.hide()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		print(event.as_text())
+	var firstTurn = turnQueue.pop_front()
+	playerTurn()
 
 func _on_attack_pressed() -> void:
-	var enemies = $enemies.get_children()
+	attack.emit()
 
 func _on_defend_pressed() -> void:
 	pass # Replace with function body.
