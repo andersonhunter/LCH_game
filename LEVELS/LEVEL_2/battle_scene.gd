@@ -78,8 +78,6 @@ func takeTurn():
 
 func attack(enemy: int) -> void:
 	var foe = $enemies.get_children()[enemy].get_children()[0]
-	print(foe)
-	print(sceneCharacters)
 	sceneCharacters[foe]["current health"] -= Global.playerStats["attack"]
 	setHealthBar(foe, sceneCharacters[foe]["current health"], sceneCharacters[foe]["base health"])
 	takeTurn()
