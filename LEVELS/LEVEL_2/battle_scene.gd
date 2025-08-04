@@ -1,6 +1,7 @@
 extends Node2D
 
-signal attack
+var isDefending: bool = false
+var isAttacking: bool = true
 
 var enemyStats = {
 	"slime": {
@@ -8,11 +9,12 @@ var enemyStats = {
 		"current health": 3,
 		"attack": 1,
 		"defense": 1,
-		"speed": 2
+		"speed": 1
 	}
 }
 var sceneCharacters: Dictionary # {char: {stats}...}
 var turnQueue: Array # [char: Node2D, char: Node2D, ...]
+var enemies: Array
 
 func setHealthBar(unit, health, maxHealth):
 	# Sets the unit's health bar
@@ -30,14 +32,14 @@ func addEnemies():
 	# Remove superfluous enemies
 	match numEnemies:
 		1:
-			$enemies/enemy2.queue_free()
-			$enemies/enemy3.queue_free()
+			$enemies/enemy2.free()
+			$enemies/enemy3.free()
 		2:
-			$enemies/enemy1.queue_free()
+			$enemies/enemy1.free()
 	for parent in $enemies.get_children():
 		var enemy = load("res://LEVELS/LEVEL_2/slime.tscn").instantiate()
 		parent.add_child(enemy)
-		sceneCharacters[enemy] = enemyStats[enemy.name]
+		sceneCharacters[enemy] = enemyStats[enemy.name].duplicate()
 		turnQueue.push_back(enemy)
 		setHealthBar(
 			enemy, 
@@ -51,30 +53,95 @@ func sortTurnQueue():
 		func(a, b): return sceneCharacters[a]["speed"] > sceneCharacters[b]["speed"]
 		)
 
+func enemyTurn():
+	takeTurn()
+
 func playerTurn():
 	$battleUI/textBox.text = ""
 	$battleUI/textBox.hide()
 	$battleUI/commands.show()
 	$battleUI/commands/attack.grab_focus()
-	await attack
+
+func takeTurn():
 	$battleUI/commands.hide()
-	$battleUI/textBox.text = "Attack who?"
-	$battleUI/textBox.show()
-	$enemies.get_children()[0].get_children()[0].get_node("targeted").show()
-	$enemies.get_children()[0].get_children()[0].get_node("targeted").play()
+	$battleUI/enemySelect.hide()
+	$battleUI/textBox.text = ""
+	$battleUI/textBox.hide()
+	var turn = turnQueue.pop_front()
+	while not is_instance_valid(turn):  # Guard against invalid nodes
+		turn = turnQueue.pop_front()
+	turnQueue.push_back(turn)
+	if turn.name == player.name:
+		playerTurn()
+	else:
+		enemyTurn()
+
+func attack(enemy: int) -> void:
+	var foe = $enemies.get_children()[enemy].get_children()[0]
+	print(foe)
+	print(sceneCharacters)
+	sceneCharacters[foe]["current health"] -= Global.playerStats["attack"]
+	setHealthBar(foe, sceneCharacters[foe]["current health"], sceneCharacters[foe]["base health"])
+	takeTurn()
 
 func _ready() -> void:
+	$battleUI/commands.hide()
 	get_node("player").add_child(player)
 	sceneCharacters[player] = Global.playerStats
 	turnQueue.push_back(player)
 	setHealthBar(player, Global.playerStats["current health"], Global.playerStats["base health"])
 	addEnemies()
 	sortTurnQueue()
-	var firstTurn = turnQueue.pop_front()
-	playerTurn()
+	takeTurn()
 
 func _on_attack_pressed() -> void:
-	attack.emit()
+	$battleUI/commands.hide()
+	$battleUI/textBox.text = "Attack who?"
+	$battleUI/textBox.show()
+	isAttacking = true
+	enemies = $enemies.get_children().map(
+		func(n): return n.get_children()[0]
+	)
+	$battleUI/enemySelect.show()
+	for n in range(enemies.size()):
+		$battleUI/enemySelect.get_children()[n].text = enemies[n].name
+		$battleUI/enemySelect.get_children()[n].show()
+		$battleUI/enemySelect.get_children()[n].disabled = false
+	$battleUI/enemySelect/enemy1.grab_focus()
 
 func _on_defend_pressed() -> void:
-	pass # Replace with function body.
+	isDefending = true
+	takeTurn()
+
+func _on_enemy_1_focus_entered() -> void:
+	enemies[0].get_node("targeted").show()
+	enemies[0].get_node("targeted").play()
+
+func _on_enemy_1_focus_exited() -> void:
+	enemies[0].get_node("targeted").hide()
+	enemies[0].get_node("targeted").stop()
+
+func _on_enemy_2_focus_entered() -> void:
+	enemies[1].get_node("targeted").show()
+	enemies[1].get_node("targeted").play()
+
+func _on_enemy_2_focus_exited() -> void:
+	enemies[1].get_node("targeted").hide()
+	enemies[1].get_node("targeted").stop()
+
+func _on_enemy_3_focus_entered() -> void:
+	enemies[2].get_node("targeted").show()
+	enemies[2].get_node("targeted").play()
+
+func _on_enemy_3_focus_exited() -> void:
+	enemies[2].get_node("targeted").hide()
+	enemies[2].get_node("targeted").stop()
+
+func _on_enemy_1_pressed() -> void:
+	attack(0)
+
+func _on_enemy_2_pressed() -> void:
+	attack(1)
+
+func _on_enemy_3_pressed() -> void:
+	attack(2)
