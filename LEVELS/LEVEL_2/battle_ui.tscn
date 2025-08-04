@@ -35,16 +35,18 @@ offset_bottom = 74.0
 color = Color(0, 0, 0, 1)
 
 [node name="textBox" type="Label" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 152.0
-offset_bottom = 72.0
+offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("1_ryivl")
 theme_override_font_sizes/font_size = 7
 
 [node name="commands" type="GridContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -101,3 +103,73 @@ theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
 theme_override_styles/hover = ExtResource("2_qe2b0")
 text = "! Defend"
 flat = true
+
+[node name="enemySelect" type="GridContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 152.0
+offset_bottom = 72.0
+columns = 3
+
+[node name="enemy1" type="Button" parent="enemySelect"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 0, 1)
+theme_override_fonts/font = ExtResource("1_ryivl")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = ExtResource("2_qe2b0")
+theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
+theme_override_styles/hover = ExtResource("2_qe2b0")
+disabled = true
+flat = true
+alignment = 0
+
+[node name="enemy2" type="Button" parent="enemySelect"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("1_ryivl")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = ExtResource("2_qe2b0")
+theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
+theme_override_styles/hover = ExtResource("2_qe2b0")
+disabled = true
+flat = true
+alignment = 0
+
+[node name="enemy3" type="Button" parent="enemySelect"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.647059, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_ryivl")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = ExtResource("2_qe2b0")
+theme_override_styles/hover_mirrored = ExtResource("2_qe2b0")
+theme_override_styles/hover = ExtResource("2_qe2b0")
+disabled = true
+flat = true
+alignment = 0
