@@ -1,7 +1,6 @@
 extends Node2D
 
 var isDefending: bool = false
-var isAttacking: bool = true
 
 var enemyStats = {
 	"slime": {
@@ -9,22 +8,30 @@ var enemyStats = {
 		"current health": 3,
 		"attack": 1,
 		"defense": 1,
-		"speed": 1
+		"speed": 1,
 	}
 }
+
+var player = preload("res://LEVELS/LEVEL_2/player_battle.tscn").instantiate()
 var sceneCharacters: Dictionary # {char: {stats}...}
 var turnQueue: Array # [char: Node2D, char: Node2D, ...]
 var enemies: Array
+
+func setLabelText(text: String) -> void:
+	$battleUI/textBox.show()
+	var tween: Tween = create_tween()
+	tween.tween_property($battleUI/textBox, "visible_ratio", 1.0, 1.5).from(0.0)
+	$battleUI/textBox.text = text
+	await tween.finished
+	return
 
 func setHealthBar(unit, health, maxHealth):
 	# Sets the unit's health bar
 	var healthBar: ProgressBar = unit.get_node("ProgressBar")
 	healthBar.max_value = maxHealth
-	healthBar.value = health
+	healthBar.value = clamp(health, 0, maxHealth)
 	var healthFlavor: Label = unit.get_node("Label")
 	healthFlavor.text = "HP: %d/%d" % [healthBar.value, healthBar.max_value]
-
-var player = preload("res://LEVELS/LEVEL_2/player_battle.tscn").instantiate()
 
 func addEnemies():
 	# Adds enemies to scene depending on how many enemies spawn [1..3]
@@ -53,20 +60,31 @@ func sortTurnQueue():
 		func(a, b): return sceneCharacters[a]["speed"] > sceneCharacters[b]["speed"]
 		)
 
-func enemyTurn():
+func enemyTurn(enemy: Node2D):
+	$battleUI/commands.hide()
+	var damage = enemyStats[enemy.name]["attack"]
+	damage -= Global.playerStats["defense"]
+	if damage <= 0:
+		damage = 1
+	var damageText = "%s attacks for %d damage" % [enemy.name, damage]
+	setLabelText(damageText)
+	await get_tree().create_timer(2.).timeout
+	Global.playerStats["current health"] -= damage
+	setHealthBar(
+		player, 
+		Global.playerStats["current health"], 
+		Global.playerStats["base health"])
+	$battleUI/textBox.text = ""
+	$battleUI/textBox.hide()
 	takeTurn()
 
 func playerTurn():
-	$battleUI/textBox.text = ""
-	$battleUI/textBox.hide()
 	$battleUI/commands.show()
 	$battleUI/commands/attack.grab_focus()
 
 func takeTurn():
 	$battleUI/commands.hide()
 	$battleUI/enemySelect.hide()
-	$battleUI/textBox.text = ""
-	$battleUI/textBox.hide()
 	var turn = turnQueue.pop_front()
 	while not is_instance_valid(turn):  # Guard against invalid nodes
 		turn = turnQueue.pop_front()
@@ -74,7 +92,7 @@ func takeTurn():
 	if turn.name == player.name:
 		playerTurn()
 	else:
-		enemyTurn()
+		enemyTurn(turn)
 
 func attack(enemy: int) -> void:
 	var foe = $enemies.get_children()[enemy].get_children()[0]
@@ -94,9 +112,7 @@ func _ready() -> void:
 
 func _on_attack_pressed() -> void:
 	$battleUI/commands.hide()
-	$battleUI/textBox.text = "Attack who?"
-	$battleUI/textBox.show()
-	isAttacking = true
+	await setLabelText("Attack who?")
 	enemies = $enemies.get_children().map(
 		func(n): return n.get_children()[0]
 	)
@@ -105,7 +121,8 @@ func _on_attack_pressed() -> void:
 		$battleUI/enemySelect.get_children()[n].text = enemies[n].name
 		$battleUI/enemySelect.get_children()[n].show()
 		$battleUI/enemySelect.get_children()[n].disabled = false
-	$battleUI/enemySelect/enemy1.grab_focus()
+		if n == 0:
+			$battleUI/enemySelect/enemy1.grab_focus()
 
 func _on_defend_pressed() -> void:
 	isDefending = true
@@ -136,10 +153,16 @@ func _on_enemy_3_focus_exited() -> void:
 	enemies[2].get_node("targeted").stop()
 
 func _on_enemy_1_pressed() -> void:
+	$battleUI/textBox.text = ""
+	$battleUI/textBox.hide()
 	attack(0)
 
 func _on_enemy_2_pressed() -> void:
+	$battleUI/textBox.text = ""
+	$battleUI/textBox.hide()
 	attack(1)
 
 func _on_enemy_3_pressed() -> void:
+	$battleUI/textBox.text = ""
+	$battleUI/textBox.hide()
 	attack(2)
