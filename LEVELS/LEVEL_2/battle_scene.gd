@@ -60,6 +60,19 @@ func sortTurnQueue():
 		func(a, b): return sceneCharacters[a]["speed"] > sceneCharacters[b]["speed"]
 		)
 
+func characterDeath(character: Node2D) -> void:
+	match character.name:
+		"player":
+			print("Character died X.X")
+			return
+		_:
+			enemies.erase(character)
+			sceneCharacters.erase(character)
+			character.get_parent().free()
+			if enemies.size() == 0:
+				get_tree().root.free()
+			return
+
 func enemyTurn(enemy: Node2D):
 	$battleUI/commands.hide()
 	var damage = enemyStats[enemy.name]["attack"]
@@ -98,6 +111,8 @@ func attack(enemy: int) -> void:
 	var foe = $enemies.get_children()[enemy].get_children()[0]
 	sceneCharacters[foe]["current health"] -= Global.playerStats["attack"]
 	setHealthBar(foe, sceneCharacters[foe]["current health"], sceneCharacters[foe]["base health"])
+	if sceneCharacters[foe]["current health"] <= 0:
+		characterDeath(foe)
 	takeTurn()
 
 func _ready() -> void:
