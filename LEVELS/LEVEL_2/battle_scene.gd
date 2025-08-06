@@ -1,6 +1,7 @@
 extends Node2D
 
 var isDefending: bool = false
+var defends: int = 3
 
 var enemyStats = {
 	"slime": {
@@ -70,7 +71,10 @@ func characterDeath(character: Node2D) -> void:
 			sceneCharacters.erase(character)
 			character.get_parent().free()
 			if enemies.size() == 0:
-				get_tree().root.free()
+				# Switch scenes
+				await get_tree().create_timer(0.25).timeout
+				# Remove scene from tree here
+				Global.goto_scene("res://LEVELS/LEVEL_1/little_endian.tscn")
 			return
 
 func enemyTurn(enemy: Node2D):
@@ -79,6 +83,9 @@ func enemyTurn(enemy: Node2D):
 	damage -= Global.playerStats["defense"]
 	if damage <= 0:
 		damage = 1
+	if isDefending:
+		damage = 0
+		defends -= 1
 	var damageText = "%s attacks for %d damage" % [enemy.name, damage]
 	setLabelText(damageText)
 	await get_tree().create_timer(2.).timeout
@@ -92,6 +99,10 @@ func enemyTurn(enemy: Node2D):
 	takeTurn()
 
 func playerTurn():
+	isDefending = false
+	for n in $battleUI/enemySelect.get_children():
+		n.disabled = true
+		n.hide()
 	$battleUI/commands.show()
 	$battleUI/commands/attack.grab_focus()
 
@@ -144,28 +155,34 @@ func _on_defend_pressed() -> void:
 	takeTurn()
 
 func _on_enemy_1_focus_entered() -> void:
-	enemies[0].get_node("targeted").show()
-	enemies[0].get_node("targeted").play()
+	if enemies.size() > 0:
+		enemies[0].get_node("targeted").show()
+		enemies[0].get_node("targeted").play()
 
 func _on_enemy_1_focus_exited() -> void:
-	enemies[0].get_node("targeted").hide()
-	enemies[0].get_node("targeted").stop()
+	if enemies.size() > 0:
+		enemies[0].get_node("targeted").hide()
+		enemies[0].get_node("targeted").stop()
 
 func _on_enemy_2_focus_entered() -> void:
-	enemies[1].get_node("targeted").show()
-	enemies[1].get_node("targeted").play()
+	if enemies.size() > 0:
+		enemies[1].get_node("targeted").show()
+		enemies[1].get_node("targeted").play()
 
 func _on_enemy_2_focus_exited() -> void:
-	enemies[1].get_node("targeted").hide()
-	enemies[1].get_node("targeted").stop()
+	if enemies.size() > 0:
+		enemies[1].get_node("targeted").hide()
+		enemies[1].get_node("targeted").stop()
 
 func _on_enemy_3_focus_entered() -> void:
-	enemies[2].get_node("targeted").show()
-	enemies[2].get_node("targeted").play()
+	if enemies.size() > 0:
+		enemies[2].get_node("targeted").show()
+		enemies[2].get_node("targeted").play()
 
 func _on_enemy_3_focus_exited() -> void:
-	enemies[2].get_node("targeted").hide()
-	enemies[2].get_node("targeted").stop()
+	if enemies.size() > 0:
+		enemies[2].get_node("targeted").hide()
+		enemies[2].get_node("targeted").stop()
 
 func _on_enemy_1_pressed() -> void:
 	$battleUI/textBox.text = ""
