@@ -85,7 +85,6 @@ func enemyTurn(enemy: Node2D):
 		damage = 1
 	if isDefending:
 		damage = 0
-		defends -= 1
 	var damageText = "%s attacks for %d damage" % [enemy.name, damage]
 	setLabelText(damageText)
 	await get_tree().create_timer(2.).timeout
@@ -103,6 +102,9 @@ func playerTurn():
 	for n in $battleUI/enemySelect.get_children():
 		n.disabled = true
 		n.hide()
+	if defends == 0:
+		$battleUI/commands/defend.disabled = true
+		$battleUI/commands/defend.hide()
 	$battleUI/commands.show()
 	$battleUI/commands/attack.grab_focus()
 
@@ -152,6 +154,9 @@ func _on_attack_pressed() -> void:
 
 func _on_defend_pressed() -> void:
 	isDefending = true
+	defends -= 1
+	print(defends)
+	player.get_node("shields").get_children()[defends].hide()
 	takeTurn()
 
 func _on_enemy_1_focus_entered() -> void:
