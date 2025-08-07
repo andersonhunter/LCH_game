@@ -8,4 +8,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if $overworld/Player.get_last_slide_collision():
+		match $overworld/Player.get_last_slide_collision().get_collider().name:
+			"slime":
+				$overworld.propagate_call("hide")
+				$overworld/Player/CollisionShape2D.disabled = true
+				self.add_child(battleScene)

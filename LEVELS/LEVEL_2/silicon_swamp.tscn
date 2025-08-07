@@ -1,15 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq4w3tnwrbenk"]
+[gd_scene load_steps=7 format=3 uid="uid://cq4w3tnwrbenk"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/silicon_swamp.gd" id="1_xnhf8"]
 [ext_resource type="PackedScene" uid="uid://b31j83y0703ip" path="res://LEVELS/LEVEL_2/swamp_map.tscn" id="2_1yd55"]
 [ext_resource type="PackedScene" uid="uid://p0ye6xumm1pp" path="res://LEVELS/LEVEL_1/player.tscn" id="3_l7dyn"]
+[ext_resource type="Texture2D" uid="uid://cgktn5e7rlm0e" path="res://ASSETS/SPRITES/ENEMIES/slime_overworld.png" id="4_n182h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7pja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n182h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ijit"]
+size = Vector2(8, 7)
 
 [node name="silicon_swamp" type="Node"]
 script = ExtResource("1_xnhf8")
 
-[node name="swamp_map" parent="." instance=ExtResource("2_1yd55")]
+[node name="overworld" type="Node" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("3_l7dyn")]
+[node name="swamp_map" parent="overworld" instance=ExtResource("2_1yd55")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="slime" type="AnimatableBody2D" parent="overworld"]
+position = Vector2(-16, -72)
+collision_layer = 5
+collision_mask = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overworld/slime"]
+sprite_frames = SubResource("SpriteFrames_u7pja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="overworld/slime"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7ijit")
+
+[node name="Player" parent="overworld" instance=ExtResource("3_l7dyn")]
+
+[node name="Camera2D" type="Camera2D" parent="overworld/Player"]
 zoom = Vector2(8, 8)
