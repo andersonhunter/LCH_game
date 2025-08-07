@@ -136,6 +136,7 @@ func _ready() -> void:
 	setHealthBar(player, Global.playerStats["current health"], Global.playerStats["base health"])
 	addEnemies()
 	sortTurnQueue()
+	$Camera2D.make_current()
 	takeTurn()
 
 func _on_attack_pressed() -> void:
