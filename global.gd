@@ -3,10 +3,10 @@ extends Node
 @export var speed = 75
 var playerStats = {
 	"name": "&null",
-	"base health": 5,
-	"current health": 5,
-	"attack": 1,
-	"defense": 1,
+	"base health": 10,
+	"current health": 10,
+	"attack": 2,
+	"defense": 2,
 	"speed": 2
 }
 
