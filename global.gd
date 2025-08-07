@@ -7,7 +7,8 @@ var playerStats = {
 	"current health": 10,
 	"attack": 2,
 	"defense": 2,
-	"speed": 2
+	"speed": 2,
+	"exp": 0
 }
 
 var current_scene = null
