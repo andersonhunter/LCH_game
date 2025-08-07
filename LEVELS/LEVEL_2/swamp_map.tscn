@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=4 uid="uid://b31j83y0703ip"]
+
+[ext_resource type="Texture2D" uid="uid://bxx75b0a8tpvb" path="res://ASSETS/TILES/swamp_tiles.png" id="1_1pgno"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n813w"]
+texture = ExtResource("1_1pgno")
+0:9/animation_speed = 1.5
+0:9/animation_frame_0/duration = 1.0
+0:9/animation_frame_1/duration = 1.0
+0:9/animation_frame_2/duration = 1.0
+0:9/0 = 0
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, -8, 8, -8, -8)
+0:7/animation_speed = 1.5
+0:7/animation_frame_0/duration = 1.0
+0:7/animation_frame_1/duration = 1.0
+0:7/animation_frame_2/duration = 1.0
+0:7/0 = 0
+0:6/animation_speed = 1.5
+0:6/animation_frame_0/duration = 1.0
+0:6/animation_frame_1/duration = 1.0
+0:6/animation_frame_2/duration = 1.0
+0:6/0 = 0
+0:5/animation_speed = 1.5
+0:5/animation_frame_0/duration = 1.0
+0:5/animation_frame_1/duration = 1.0
+0:5/animation_frame_2/duration = 1.0
+0:5/0 = 0
+0:4/animation_speed = 1.5
+0:4/animation_frame_0/duration = 1.0
+0:4/animation_frame_1/duration = 1.0
+0:4/animation_frame_2/duration = 1.0
+0:4/0 = 0
+0:3/animation_speed = 1.5
+0:3/animation_frame_0/duration = 1.0
+0:3/animation_frame_1/duration = 1.0
+0:3/animation_frame_2/duration = 1.0
+0:3/0 = 0
+0:2/animation_speed = 1.5
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/0 = 0
+0:1/animation_speed = 1.5
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/0 = 0
+3:4/animation_speed = 1.5
+3:4/animation_frame_0/duration = 1.0
+3:4/animation_frame_1/duration = 1.0
+3:4/animation_frame_2/duration = 1.0
+3:4/0 = 0
+3:5/animation_speed = 1.5
+3:5/animation_frame_0/duration = 1.0
+3:5/animation_frame_1/duration = 1.0
+3:5/animation_frame_2/duration = 1.0
+3:5/0 = 0
+3:6/animation_speed = 1.5
+3:6/animation_frame_0/duration = 1.0
+3:6/animation_frame_1/duration = 1.0
+3:6/animation_frame_2/duration = 1.0
+3:6/0 = 0
+3:7/animation_speed = 1.5
+3:7/animation_frame_0/duration = 1.0
+3:7/animation_frame_1/duration = 1.0
+3:7/animation_frame_2/duration = 1.0
+3:7/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+4:2/0 = 0
+0:8/animation_speed = 1.5
+0:8/animation_frame_0/duration = 1.0
+0:8/animation_frame_1/duration = 1.0
+0:8/animation_frame_2/duration = 1.0
+0:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_f56sn"]
+physics_layer_0/collision_layer = 5
+sources/0 = SubResource("TileSetAtlasSource_n813w")
+
+[node name="swamp_map" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAD/////AAAAAAkAAAD///7/AAAAAAkAAAD///3/AAAAAAkAAAD///z/AAAAAAkAAAD///v/AAAAAAkAAAD///r/AAAAAAkAAAAAAP//AAAAAAgAAAAAAPz/AAAAAAgAAAAAAPv/AAAAAAgAAAAAAPr/AAAAAAgAAAD+////AAAAAAkAAAD+//7/AAAAAAkAAAD+//3/AAAAAAkAAAD+//z/AAAAAAkAAAD+//v/AAAAAAkAAAD+//r/AAAAAAkAAAAAAPn/AAAAAAgAAAD+//n/AAAAAAkAAAD///n/AAAAAAkAAAD9//f/AAAAAAEAACD8//f/AAAAAAEAACD7//f/AAAAAAEAACD+/wAAAAAAAAIAAGD//wAAAAAAAAIAAGAAAAAAAAAAAAIAAHD6//f/AAAAAAcAAGD5//f/AAAAAAQAAFD4//f/AAAAAAUAAFD9//b/AAAAAAEAAAD8//b/AAAAAAEAAAD4//b/AAAAAAUAAHD5//b/AAAAAAQAAHD6//b/AAAAAAcAAED3//b/AAAAAAYAAHD3//f/AAAAAAYAAFD2//b/AAAAAAIAAAD2//f/AAAAAAIAACAAAP3/AAAAAAgAAAAAAP7/AAAAAAgAAAAJAPb/AAAAAAIAABAIAPb/AAAAAAYAAGAHAPb/AAAAAAUAAGAGAPb/AAAAAAQAAGAFAPb/AAAAAAcAAFAEAPb/AAAAAAEAABADAPb/AAAAAAEAABACAPb/AAAAAAEAABAJAPf/AAAAAAIAADAIAPf/AAAAAAYAAEAHAPf/AAAAAAUAAEAGAPf/AAAAAAQAAEAFAPf/AAAAAAcAAHAEAPf/AAAAAAEAADADAPf/AAAAAAEAADACAPf/AAAAAAEAADABAPn/AAAAAAkAABABAPr/AAAAAAkAABABAPv/AAAAAAkAABABAPz/AAAAAAkAABABAP3/AAAAAAkAABABAP7/AAAAAAkAABABAP//AAAAAAkAABABAAAAAAAAAAIAAHD7//b/AAAAAAEAAAD+//b/AAAAAAcAAFD///b/AAADAAcAAAABAPb/AAAAAAcAAEAAAPb/AAADAAcAABD///f/AAADAAcAAGAAAPf/AAADAAcAAHD///j/AAAAAAcAAAAAAPj/AAAAAAcAABABAPj/AAAAAAIAAFD+//f/AAAAAAEAADABAPf/AAAAAAEAADD+//j/AAAAAAIAAED///X/AAAAAAkAAAD///T/AAAAAAkAAAD///P/AAAAAAkAAAAAAPX/AAAAAAgAAAAAAPT/AAAAAAgAAAAAAPP/AAAAAAgAAAAAAPL/AAAAAAgAAAAAAPH/AAAAAAgAAAAAAPD/AAAAAAgAAAD///L/AAAAAAkAAAD///H/AAAAAAkAAAD///D/AAAAAAkAAAAAAO//AAAAAAIAAFD//+//AAAAAAIAAEA=")
+tile_set = SubResource("TileSet_f56sn")
