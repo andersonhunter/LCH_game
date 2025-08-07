@@ -153,10 +153,16 @@ func _on_attack_pressed() -> void:
 			$battleUI/enemySelect/enemy1.grab_focus()
 
 func _on_defend_pressed() -> void:
+	$battleUI/commands.hide()
 	isDefending = true
 	defends -= 1
-	print(defends)
 	player.get_node("shields").get_children()[defends].hide()
+	match defends:
+		1:
+			setLabelText("%d defend remaining..." % [defends])
+		_:
+			setLabelText("%d defends remaining..." % [defends])
+	await get_tree().create_timer(2.).timeout
 	takeTurn()
 
 func _on_enemy_1_focus_entered() -> void:
