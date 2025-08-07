@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq4w3tnwrbenk"]
+[gd_scene load_steps=2 format=3 uid="uid://cq4w3tnwrbenk"]
 
-[ext_resource type="PackedScene" uid="uid://bw85op1we8yn3" path="res://LEVELS/LEVEL_2/battle_scene.tscn" id="1_7yng5"]
-[ext_resource type="Script" path="res://LEVELS/LEVEL_2/battle.gd" id="2_w6o87"]
+[ext_resource type="Script" path="res://LEVELS/LEVEL_2/silicon_swamp.gd" id="1_xnhf8"]
 
 [node name="silicon_swamp" type="Node"]
-
-[node name="battleScene" parent="." instance=ExtResource("1_7yng5")]
-script = ExtResource("2_w6o87")
+script = ExtResource("1_xnhf8")

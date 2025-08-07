@@ -37,6 +37,7 @@ func setHealthBar(unit, health, maxHealth):
 func addEnemies():
 	# Adds enemies to scene depending on how many enemies spawn [1..3]
 	var numEnemies = RandomNumberGenerator.new().randi_range(1, 3)
+	numEnemies = 1
 	# Remove superfluous enemies
 	match numEnemies:
 		1:
@@ -74,7 +75,7 @@ func characterDeath(character: Node2D) -> void:
 				# Switch scenes
 				await get_tree().create_timer(0.25).timeout
 				# Remove scene from tree here
-				Global.goto_scene("res://LEVELS/LEVEL_1/little_endian.tscn")
+				get_tree().root.get_node("silicon_swamp").remove_child(self)
 			return
 
 func enemyTurn(enemy: Node2D):
