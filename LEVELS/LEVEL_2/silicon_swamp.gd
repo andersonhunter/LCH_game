@@ -13,6 +13,9 @@ func startBattle():
 	self.add_child(battleScene)
 	battleScene.battleDone.connect(_on_battleDone)
 
+func startBossBattle():
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $overworld/Player.get_last_slide_collision():
@@ -23,6 +26,8 @@ func _process(delta: float) -> void:
 				startBattle()
 			"slime3":
 				startBattle()
+			"boss":
+				startBossBattle()
 
 func _on_battleDone():
 	self.remove_child(self.get_node("battleScene"))
