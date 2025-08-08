@@ -38,7 +38,6 @@ func setHealthBar(unit, health, maxHealth):
 func addEnemies():
 	# Adds enemies to scene depending on how many enemies spawn [1..3]
 	var numEnemies = RandomNumberGenerator.new().randi_range(1, 3)
-	numEnemies = 1
 	# Remove superfluous enemies
 	match numEnemies:
 		1:
