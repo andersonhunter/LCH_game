@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq4w3tnwrbenk"]
+[gd_scene load_steps=10 format=3 uid="uid://cq4w3tnwrbenk"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/silicon_swamp.gd" id="1_xnhf8"]
 [ext_resource type="PackedScene" uid="uid://b31j83y0703ip" path="res://LEVELS/LEVEL_2/swamp_map.tscn" id="2_1yd55"]
+[ext_resource type="Script" path="res://LEVELS/LEVEL_2/slime.gd" id="3_8k352"]
 [ext_resource type="PackedScene" uid="uid://p0ye6xumm1pp" path="res://LEVELS/LEVEL_1/player.tscn" id="3_l7dyn"]
 [ext_resource type="Texture2D" uid="uid://cgktn5e7rlm0e" path="res://ASSETS/SPRITES/ENEMIES/slime_overworld.png" id="4_n182h"]
+[ext_resource type="Script" path="res://LEVELS/LEVEL_2/slime_2.gd" id="5_wngms"]
+[ext_resource type="Script" path="res://LEVELS/LEVEL_2/slime_3.gd" id="6_juk1s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7pja"]
 animations = [{
@@ -30,6 +33,7 @@ script = ExtResource("1_xnhf8")
 position = Vector2(-16, -72)
 collision_layer = 5
 collision_mask = 5
+script = ExtResource("3_8k352")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overworld/slime"]
 sprite_frames = SubResource("SpriteFrames_u7pja")
@@ -42,6 +46,7 @@ shape = SubResource("RectangleShape2D_7ijit")
 position = Vector2(46, -143)
 collision_layer = 5
 collision_mask = 5
+script = ExtResource("5_wngms")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overworld/slime2"]
 sprite_frames = SubResource("SpriteFrames_u7pja")
@@ -54,6 +59,7 @@ shape = SubResource("RectangleShape2D_7ijit")
 position = Vector2(-80, -154)
 collision_layer = 5
 collision_mask = 5
+script = ExtResource("6_juk1s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overworld/slime3"]
 sprite_frames = SubResource("SpriteFrames_u7pja")
