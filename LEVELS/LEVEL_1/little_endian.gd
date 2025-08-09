@@ -38,6 +38,8 @@ func _ready() -> void:
 	else:
 		$Player.start($StartPosition.position)
 	# Start playing LED animations
+	if Global.isDark:
+		$darkOverworld.visible = true
 	set_leds($LED_SET_1)
 	set_leds($LED_SET_2)
 	set_leds($LED_SET_3)
