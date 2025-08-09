@@ -4,7 +4,9 @@ var removeEnemy = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Global.isDark = true
+	if Global.isDark:
+		$darkOverworld.visible = true
 
 func startBattle():
 	removeEnemy = $overworld/Player.get_last_slide_collision().get_collider()

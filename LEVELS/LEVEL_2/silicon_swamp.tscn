@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq4w3tnwrbenk"]
+[gd_scene load_steps=16 format=3 uid="uid://cq4w3tnwrbenk"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/silicon_swamp.gd" id="1_xnhf8"]
 [ext_resource type="PackedScene" uid="uid://b31j83y0703ip" path="res://LEVELS/LEVEL_2/swamp_map.tscn" id="2_1yd55"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b7fds02wo30ht" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_1.png" id="7_00nlr"]
 [ext_resource type="Texture2D" uid="uid://c21627j2np8y" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_2.png" id="8_2g43f"]
 [ext_resource type="Texture2D" uid="uid://fas4vv88ghyg" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_3.png" id="9_xuryh"]
+[ext_resource type="PackedScene" uid="uid://dtxmaund27bnf" path="res://LEVELS/LEVEL_1/dark_overworld.tscn" id="11_8cski"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7pja"]
 animations = [{
@@ -98,21 +99,19 @@ shape = SubResource("RectangleShape2D_7ijit")
 [node name="Camera2D" type="Camera2D" parent="overworld/Player"]
 zoom = Vector2(8, 8)
 
-[node name="ColorRect" type="ColorRect" parent="overworld/Player"]
-offset_left = -48.0
-offset_top = -48.0
-offset_right = -8.00001
-offset_bottom = -8.0
-scale = Vector2(2.41996, 2.40244)
-color = Color(0, 0, 0, 0.792157)
-
 [node name="boss" type="AnimatableBody2D" parent="overworld"]
 position = Vector2(0, -264)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overworld/boss"]
 sprite_frames = SubResource("SpriteFrames_fx520")
 autoplay = "default"
-frame_progress = 0.578453
+frame_progress = 0.184658
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="overworld/boss"]
 shape = SubResource("RectangleShape2D_6p56m")
+
+[node name="darkOverworld" parent="." instance=ExtResource("11_8cski")]
+offset_left = -368.0
+offset_top = -448.0
+offset_right = -368.0
+offset_bottom = -448.0
