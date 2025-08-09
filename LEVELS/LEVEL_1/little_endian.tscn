@@ -26,53 +26,59 @@ size = Vector2(4, 2)
 script = ExtResource("1_j410d")
 
 [node name="background" parent="." instance=ExtResource("2_coe6v")]
+position = Vector2(-361, -360)
 tile_map_data = PackedByteArray("AAAPABYAAAAHAC0AAAAPABcAAAAHAC0AAAAPABgAAAAHAC0AAAAPABkAAAAHAC0AAAAPABoAAAAHAC4AAAAQABoAAAAIAC4AAAARABoAAAAIAC4AAAASABoAAAAJAC4AAAASABgAAAAJAC0AAAASABcAAAAJAC0AAAASABYAAAAJAC0AAAARABkAAAAIAC0AAAAQABkAAAAIAC0AAAAQABgAAAAIAC0AAAARABgAAAAIAC0AAAARABcAAAAIAC0AAAAQABcAAAAIAC0AAAAQABYAAAAIAC0AAAARABYAAAAIAC0AAAAPABUAAAAHAC0AAAAPABQAAAAHAC0AAAAPABMAAAAHACsAAAAQABMAAAAIACsAAAARABMAAAAIACsAAAASABMAAAAJACsAAAASABUAAAAJAC0AAAAQABQAAAAIACwAAAARABQAAAAIACwAAAARABUAAAAIACwAAAAQABUAAAAIACwAAAAaABMAAAAHACsAAAAaABUAAAAHAC0AAAAaABYAAAAHAC0AAAAaABcAAAAHAC0AAAAaABgAAAAHAC0AAAAaABoAAAAHAC4AAAAbABMAAAAIACsAAAAbABQAAAAIAC0AAAAbABUAAAAIAC0AAAAbABYAAAAIAC0AAAAbABcAAAAIAC0AAAAbABgAAAAIAC0AAAAbABkAAAAIAC0AAAAbABoAAAAIAC4AAAAcABMAAAAIACsAAAAcABQAAAAIAC0AAAAcABUAAAAIAC0AAAAcABYAAAAIAC0AAAAcABcAAAAIAC0AAAAcABgAAAAIAC0AAAAcABkAAAAIAC0AAAAcABoAAAAIAC4AAAAdABMAAAAJACsAAAAdABQAAAAJAC0AAAAdABUAAAAJAC0AAAAdABYAAAAJAC0AAAAdABcAAAAJAC0AAAAdABgAAAAJAC0AAAAdABkAAAAJAC0AAAAdABoAAAAJAC4AAAAUABIAAAABACsAAAAVABIAAAACACsAAAAWABIAAAACACsAAAAXABIAAAACACsAAAAYABIAAAADACsAAAAUABMAAAABAC0AAAAUABUAAAABAC0AAAAUABYAAAABAC0AAAAUABcAAAABAC0AAAAUABgAAAABAC0AAAAUABoAAAABAC0AAAAUABsAAAABAC4AAAAVABsAAAACAC4AAAAWABsAAAACAC4AAAAXABsAAAACAC4AAAAYABsAAAADAC4AAAAYABoAAAADAC0AAAAYABgAAAADAC0AAAAYABcAAAADAC0AAAAYABYAAAADAC0AAAAYABUAAAADAC0AAAAYABMAAAADAC0AAAAVABMAAAACACwAAAAWABMAAAACACwAAAAXABMAAAACACwAAAAXABQAAAACACwAAAAXABUAAAACACwAAAAXABYAAAACACwAAAAXABcAAAACACwAAAAXABgAAAACACwAAAAXABkAAAACACwAAAAXABoAAAACACwAAAAWABoAAAACACwAAAAVABoAAAACACwAAAAVABkAAAACACwAAAAVABgAAAACACwAAAAVABcAAAACACwAAAAVABYAAAACACwAAAAVABUAAAACACwAAAAVABQAAAACACwAAAAWABQAAAACACwAAAAWABUAAAACACwAAAAWABYAAAACACwAAAAWABcAAAACACwAAAAWABgAAAACACwAAAAWABkAAAACACwAAAATABkAAAAFAC0AAAATABgAAAAFACsAAAATABQAAAAFAC0AAAATABMAAAAFACsAAAAaABQAAAAHACwAAAAaABkAAAAHACwAAAASABkAAAAJACwAAAASABQAAAAJACwAAAAUABQAAAABACwAAAAUABkAAAABACwAAAAYABkAAAADACwAAAAYABQAAAADACwAAAAZABkAAAAFAC0AAAAZABQAAAAFAC0AAAAZABgAAAAFACsAAAAZABMAAAAFACsAAAA=")
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(360, 360)
+position = Vector2(-1, 0)
 
 [node name="houses" parent="." instance=ExtResource("3_vvk7m")]
 texture_filter = 1
+position = Vector2(-361, -360)
 tile_map_data = PackedByteArray("AAAQABcAAAABACgAAAAQABgAAAABACkAAAARABcAAAACACgAAAARABgAAAACACkAAAAbABcAAAAEACgAAAAcABcAAAAFACgAAAAbABIAAAAEACUAAAAcABIAAAAFACUAAAAQABIAAAABACUAAAARABIAAAACACUAAAAQABMAAAABACYAAAARABMAAAACACYAAAAbABMAAAAEACYAAAAcABMAAAAFACYAAAAbABgAAAAEACkAAAAcABgAAAAFACkAAAA=")
 
 [node name="enter_pink_house" type="Area2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_pink_house"]
 position = Vector2(272, 392)
 shape = SubResource("RectangleShape2D_mvhcb")
 
 [node name="enter_purple_house" type="Area2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_purple_house"]
 position = Vector2(272, 311)
 shape = SubResource("RectangleShape2D_c8et5")
 
 [node name="enter_blue_house" type="Area2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_blue_house"]
 position = Vector2(448, 311)
 shape = SubResource("RectangleShape2D_daanj")
 
 [node name="enter_brown_house" type="Area2D" parent="."]
-position = Vector2(448, 391)
+position = Vector2(87, 31)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enter_brown_house"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_srjm5")
 
 [node name="Mite1" type="Node2D" parent="."]
-position = Vector2(344, 320)
+position = Vector2(-17, -40)
 script = ExtResource("4_xjjic")
 
 [node name="mold_mite_1" parent="Mite1" instance=ExtResource("8_47f8w")]
 
 [node name="Player" parent="." instance=ExtResource("4_cwj72")]
-position = Vector2(360, 360)
+position = Vector2(-1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(8, 8)
 
 [node name="LED_SET_1" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_1" instance=ExtResource("5_61rlc")]
 position = Vector2(240, 308)
@@ -88,6 +94,7 @@ position = Vector2(240, 324)
 position = Vector2(240, 332)
 
 [node name="LED_SET_2" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_2" instance=ExtResource("5_61rlc")]
 position = Vector2(240, 340)
@@ -103,6 +110,7 @@ position = Vector2(240, 356)
 position = Vector2(240, 364)
 
 [node name="LED_SET_3" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_3" instance=ExtResource("5_61rlc")]
 position = Vector2(240, 372)
@@ -118,6 +126,7 @@ position = Vector2(240, 388)
 position = Vector2(240, 396)
 
 [node name="LED_SET_4" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_4" instance=ExtResource("5_61rlc")]
 position = Vector2(240, 404)
@@ -133,6 +142,7 @@ position = Vector2(240, 420)
 position = Vector2(240, 428)
 
 [node name="LED_SET_5" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_5" instance=ExtResource("5_61rlc")]
 position = Vector2(480, 308)
@@ -148,6 +158,7 @@ position = Vector2(480, 324)
 position = Vector2(480, 332)
 
 [node name="LED_SET_6" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_6" instance=ExtResource("5_61rlc")]
 position = Vector2(480, 340)
@@ -163,6 +174,7 @@ position = Vector2(480, 356)
 position = Vector2(480, 364)
 
 [node name="LED_SET_7" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_7" instance=ExtResource("5_61rlc")]
 position = Vector2(480, 372)
@@ -178,6 +190,7 @@ position = Vector2(480, 388)
 position = Vector2(480, 396)
 
 [node name="LED_SET_8" type="Node2D" parent="."]
+position = Vector2(-361, -360)
 
 [node name="LED_1" parent="LED_SET_8" instance=ExtResource("5_61rlc")]
 position = Vector2(480, 404)
@@ -193,10 +206,10 @@ position = Vector2(480, 420)
 position = Vector2(480, 428)
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource("6_n14ku")]
-offset_left = -7.0
-offset_top = 39.0
-offset_right = -7.0
-offset_bottom = 39.0
+offset_left = -368.0
+offset_top = -321.0
+offset_right = -368.0
+offset_bottom = -321.0
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_d6i20")
