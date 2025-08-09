@@ -2,12 +2,6 @@ extends Node
 var battleScene = preload("res://LEVELS/LEVEL_2/battle_scene.tscn").instantiate()
 var removeEnemy = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Global.isDark = true
-	if Global.isDark:
-		$darkOverworld.visible = true
-
 func startBattle():
 	removeEnemy = $overworld/Player.get_last_slide_collision().get_collider()
 	$overworld.propagate_call("hide")
