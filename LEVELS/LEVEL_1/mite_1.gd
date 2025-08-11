@@ -30,9 +30,10 @@ func start_tween():
 	tween.tween_property(moldMite, "position", Vector2.ZERO, duration / 2)
 	tween.tween_interval(2.0)
 
+func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
+	stop()
+
+
 func _on_dialogue_text_completed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	start()
-
-func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
-	stop()

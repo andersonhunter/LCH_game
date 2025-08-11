@@ -3,7 +3,6 @@ extends CharacterBody2D
 var speed = Global.speed
 var screen_size
 var bat = preload("res://LEVELS/LEVEL_1/bat.tscn").instantiate()
-var darkOverworld = preload("res://LEVELS/LEVEL_1/dark_overworld.tscn").instantiate()
 signal mite_1_collide
 signal startDialogue(collider: CharacterBody2D)
 @onready var rayCast = $RayCast2D
@@ -19,27 +18,16 @@ func _ready():
 	Global.position_array.resize(100)
 	Global.position_array.fill(position)
 	# If character has bat companion, add them
-	if Global.has_bat and Global.isDark:
+	if Global.has_bat:
 		var parent := get_parent()
 		# Wait until parent is ready, then add bat as sibling
 		parent.ready.connect(func():
 			parent.add_child(bat)
-			parent.add_child(darkOverworld)
-		)
-		bat.hide()
-		bat.position = position
-	elif Global.has_bat:
-		var parent := get_parent()
-		# Wait until parent is ready, then add bat as sibling
-		parent.ready.connect(func():
-			parent.add_child(bat)
-			parent.add_child(darkOverworld)
 		)
 		bat.hide()
 		bat.position = position
 
 func _process(delta: float) -> void:
-	$enterPrompt.hide()
 	var input = Vector2.ZERO
 	input = Input.get_vector(
 		"move_left", "move_right", "move_up", "move_down"
@@ -56,10 +44,8 @@ func _process(delta: float) -> void:
 			$enterPrompt.show()
 		if collider.name == "mold_mite_1" and Input.is_action_pressed("enter"):
 			startDialogue.emit(collider)
-	#if get_last_slide_collision():
-		#match get_last_slide_collision().get_collider().name:
-			#"mold_mite_1":
-				#mite_1_collide.emit()
+	if not rayCast.is_colliding():
+		$enterPrompt.hide()
 	velocity = input * speed
 	move_and_slide()
 	if get_real_velocity() != Vector2.ZERO:

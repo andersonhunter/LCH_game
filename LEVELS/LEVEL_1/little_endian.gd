@@ -6,6 +6,8 @@ var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
 var bat_path = "res://LEVELS/LEVEL_1/bat.tscn"
 var frameCount = 0
+var darkOverworld = preload("res://LEVELS/LEVEL_1/dark_overworld.tscn").instantiate()
+@onready var player: CharacterBody2D = get_node("overworld").get_node("Player")
 
 var speed = Global.speed
 @onready var mmm1Dialog: Array = [
@@ -29,9 +31,9 @@ func set_leds(parent_node: Node2D) -> void:
 
 func transition() -> void:
 	# Play transition animation
-	$Player.speed = 0
-	$SceneTransitionRect.get_child(0).play("fade")
-	$bgm.stop()
+	player.speed = 0
+	$overworld/SceneTransitionRect.get_child(0).play("fade")
+	$overworld/bgm.stop()
 	await get_tree().create_timer(0.5).timeout
 
 # Called when the node enters the scene tree for the first time.
@@ -41,23 +43,21 @@ func _ready() -> void:
 	# Else set as start
 	if Global.player_location != null:
 		Global.player_location[1] += 2
-		$Player.start(Global.player_location)
+		player.start(Global.player_location)
 	else:
-		$Player.start($StartPosition.position)
+		player.start(get_node("overworld").get_node("StartPosition").position)
 	# Start playing LED animations
-	if Global.isDark:
-		$darkOverworld.visible = true
-	set_leds($LED_SET_1)
-	set_leds($LED_SET_2)
-	set_leds($LED_SET_3)
-	set_leds($LED_SET_4)
-	set_leds($LED_SET_5)
-	set_leds($LED_SET_6)
-	set_leds($LED_SET_7)
-	set_leds($LED_SET_8)
+	set_leds($overworld/LED_SET_1)
+	set_leds($overworld/LED_SET_2)
+	set_leds($overworld/LED_SET_3)
+	set_leds($overworld/LED_SET_4)
+	set_leds($overworld/LED_SET_5)
+	set_leds($overworld/LED_SET_6)
+	set_leds($overworld/LED_SET_7)
+	set_leds($overworld/LED_SET_8)
 	# Set up bgm
-	$bgm.volume_db = Global.music_volume
-	$bgm.play(Global.music_pos)
+	$overworld/bgm.volume_db = Global.music_volume
+	$overworld/bgm.play(Global.music_pos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -65,43 +65,44 @@ func _process(delta: float) -> void:
 
 func _on_enter_purple_house_body_entered(body: Node2D) -> void:
 	# Player is entering the purple house
-	if body == $Player:
+	if body == player:
 		# Save location for later
-		Global.player_location = $Player.position
+		Global.player_location = player.position
 		await transition()
 		Global.goto_scene(house_2)
 
 func _on_enter_blue_house_body_entered(body: Node2D) -> void:
 	# Player is entering the blue house
-	if body == $Player:
+	if body == player:
 		# Save location for later
-		Global.player_location = $Player.position
+		Global.player_location = player.position
 		await transition()
 		Global.goto_scene(house_3)
 
 func _on_enter_brown_house_body_entered(body: Node2D) -> void:
 	# Player is entering the brown house
-	if body == $Player:
+	if body == player:
 		# Save location for later
-		Global.player_location = $Player.position
+		Global.player_location = player.position
 		await transition()
 		Global.goto_scene(house_4)
 
 func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 		# Player is entering pink house
-	if body == $Player:
+	if body == player:
 		## Save location for later
-		Global.player_location = $Player.position
-		Global.music_pos = $bgm.get_playback_position()
+		Global.player_location = player.position
+		Global.music_pos = $overworld/bgm.get_playback_position()
 		await transition()
 		Global.goto_scene(house_1)
 
 func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
-	self.get_node("Bat").hide()
-	$Player.speed = 0.
-	$Player/Dialogue.show()
+	var dialogue = player.get_node("Dialogue")
+	$overworld.get_node("Bat").hide()
+	player.speed = 0.
+	dialogue.show()
 	startDialog.emit(mmm1Dialog)
-	await $Player/Dialogue.textCompleted
-	$Player/Dialogue.hide()
-	self.get_node("Bat").show()
-	$Player.speed = Global.speed
+	await dialogue.textCompleted
+	dialogue.hide()
+	$overworld.get_node("Bat").show()
+	player.speed = Global.speed

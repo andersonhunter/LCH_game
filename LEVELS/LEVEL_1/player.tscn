@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://p0ye6xumm1pp"]
+[gd_scene load_steps=17 format=3 uid="uid://p0ye6xumm1pp"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/player.gd" id="1_q4vw7"]
 [ext_resource type="Texture2D" uid="uid://gmf1d88krar7" path="res://ASSETS/SPRITES/idle_1.png" id="2_ftxn4"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://oy266qfolibj" path="res://ASSETS/SPRITES/right_1.png" id="10_dscy1"]
 [ext_resource type="Texture2D" uid="uid://cp7a6qdwqpya8" path="res://ASSETS/SPRITES/right_2.png" id="11_ffcb5"]
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/animated_sprite_2d.gd" id="12_asbbt"]
+[ext_resource type="PackedScene" uid="uid://du1crknot6vve" path="res://DialogueSystem/enter_prompt.tscn" id="13_iec0i"]
+[ext_resource type="PackedScene" uid="uid://cploxax04lv60" path="res://DialogueSystem/textBox.tscn" id="14_51f3r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d6r0l"]
 animations = [{
@@ -97,3 +99,15 @@ target_position = Vector2(0, -13)
 collision_mask = 5
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="enterPrompt" parent="." instance=ExtResource("13_iec0i")]
+visible = false
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = -8.0
+
+[node name="Dialogue" parent="." instance=ExtResource("14_51f3r")]
+visible = false
+offset_left = -40.0
+offset_right = 40.0
