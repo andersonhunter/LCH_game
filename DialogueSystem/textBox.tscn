@@ -45,10 +45,6 @@ script = ExtResource("4_bcwgt")
 
 [node name="PauseTimer" type="Timer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(40, 16)
-zoom = Vector2(8, 8)
-
 [connection signal="timeout" from="TypeTyper" to="." method="_on_type_typer_timeout"]
 [connection signal="pause_requested" from="PauseCalculator" to="." method="_on_pause_calculator_pause_requested"]
 [connection signal="timeout" from="PauseTimer" to="." method="_on_pause_timer_timeout"]

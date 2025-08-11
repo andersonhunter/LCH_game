@@ -5,8 +5,12 @@ extends Control
 @onready var type_timer := get_node("TypeTyper") as Timer
 @onready var pause_timer := get_node("PauseTimer") as Timer
 @onready var _calc := get_node("PauseCalculator") as PauseCalculator
+var messageDuration: float = 2.0
+
+var messages: Array = []
 
 signal message_completed
+signal textCompleted
 
 func update_message(message: String) -> void:
 	content.bbcode_text = _calc.extract_pauses_from_string(message)
@@ -15,8 +19,12 @@ func update_message(message: String) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().create_timer(1.0).timeout
-	update_message("[color=green][wave]hello[/wave] from me inside Godot! This... is really cool[/color]")
+	for message in messages:
+		await get_tree().create_timer(messageDuration).timeout
+		update_message(message)
+	await get_tree().create_timer(messageDuration).timeout
+	textCompleted.emit()
+	self.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
