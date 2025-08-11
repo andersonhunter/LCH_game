@@ -9,11 +9,12 @@ var frameCount = 0
 
 var speed = Global.speed
 @onready var mmm1Dialog: Array = [
-	"This is a test of the Emergency Broadcast System",
-	"Lorem ipsum dolor. Tempus fugit.",
-	"Anyway, haha, byeeeeee"
+	"[color=green][wave]Hello world[/wave][/color]",
+	"[color=green]Programmed to think but not to feel[/color]",
+	"[color=green]Not even sure if this is real...[/color]"
 ]
 
+signal startDialog(message: Array)
 
 func set_leds(parent_node: Node2D) -> void:
 	# Set the LED frames and begin playing
@@ -95,9 +96,12 @@ func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 		await transition()
 		Global.goto_scene(house_1)
 
-func _on_player_mite_1_collide() -> void:
-	pass
-	#$Player/AnimatedSprite2D.play("idle")
-	#$textBoxUi.show()
-	#$textBoxUi/Camera2D.make_current()
-	#$textBoxUi/textBox.text = mmm1Dialog[0]
+func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
+	self.get_node("Bat").hide()
+	$Player.speed = 0.
+	$Player/Dialogue.show()
+	startDialog.emit(mmm1Dialog)
+	await $Player/Dialogue.textCompleted
+	$Player/Dialogue.hide()
+	self.get_node("Bat").show()
+	$Player.speed = Global.speed

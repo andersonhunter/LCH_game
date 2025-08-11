@@ -5,6 +5,7 @@ var screen_size
 var bat = preload("res://LEVELS/LEVEL_1/bat.tscn").instantiate()
 var darkOverworld = preload("res://LEVELS/LEVEL_1/dark_overworld.tscn").instantiate()
 signal mite_1_collide
+signal startDialogue(collider: CharacterBody2D)
 @onready var rayCast = $RayCast2D
 
 func start(pos):
@@ -38,6 +39,7 @@ func _ready():
 		bat.position = position
 
 func _process(delta: float) -> void:
+	$enterPrompt.hide()
 	var input = Vector2.ZERO
 	input = Input.get_vector(
 		"move_left", "move_right", "move_up", "move_down"
@@ -50,14 +52,14 @@ func _process(delta: float) -> void:
 		# Collision detection for ray
 		var collider = rayCast.get_collider()
 		if collider.name == "mold_mite_1":
-			# Maybe add a switch statement function for collisions?
-			# match (collider.name) case "mold_mite_1": startConversation
-			# Also need rotation of raycast
-			mite_1_collide.emit()
-	if get_last_slide_collision():
-		match get_last_slide_collision().get_collider().name:
-			"mold_mite_1":
-				mite_1_collide.emit()
+			#mite_1_collide.emit()
+			$enterPrompt.show()
+		if collider.name == "mold_mite_1" and Input.is_action_pressed("enter"):
+			startDialogue.emit(collider)
+	#if get_last_slide_collision():
+		#match get_last_slide_collision().get_collider().name:
+			#"mold_mite_1":
+				#mite_1_collide.emit()
 	velocity = input * speed
 	move_and_slide()
 	if get_real_velocity() != Vector2.ZERO:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://1ptksoeppc8j"]
+[gd_scene load_steps=16 format=4 uid="uid://1ptksoeppc8j"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/little_endian.gd" id="1_j410d"]
 [ext_resource type="PackedScene" uid="uid://bhsegbh3s6k8c" path="res://LEVELS/LEVEL_1/tile_map_layer.tscn" id="2_coe6v"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b44s1rtiwgdje" path="res://LEVELS/LEVEL_1/led.tscn" id="5_61rlc"]
 [ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="6_n14ku"]
 [ext_resource type="AudioStream" uid="uid://bdxo41ksxykb" path="res://ASSETS/MUSIC/Little Endian Overworld Theme.mp3" id="7_d6i20"]
+[ext_resource type="PackedScene" uid="uid://cploxax04lv60" path="res://DialogueSystem/textBox.tscn" id="7_pgldm"]
+[ext_resource type="PackedScene" uid="uid://du1crknot6vve" path="res://DialogueSystem/enter_prompt.tscn" id="8_8hmsr"]
 [ext_resource type="PackedScene" uid="uid://bpr2g0kiff414" path="res://LEVELS/LEVEL_1/mold_mite.tscn" id="8_47f8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvhcb"]
@@ -77,6 +79,18 @@ position = Vector2(-1, 0)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, 0)
 zoom = Vector2(8, 8)
+
+[node name="Dialogue" parent="Player" instance=ExtResource("7_pgldm")]
+visible = false
+offset_left = -39.0
+offset_right = 41.0
+
+[node name="enterPrompt" parent="Player" instance=ExtResource("8_8hmsr")]
+visible = false
+offset_left = 9.0
+offset_top = -8.0
+offset_right = 9.0
+offset_bottom = -8.0
 
 [node name="LED_SET_1" type="Node2D" parent="."]
 position = Vector2(-361, -360)
@@ -216,9 +230,13 @@ offset_bottom = -321.0
 stream = ExtResource("7_d6i20")
 parameters/looping = true
 
+[connection signal="startDialog" from="." to="Player/Dialogue" method="_on_little_endian_start_dialog"]
 [connection signal="body_entered" from="enter_pink_house" to="." method="_on_enter_pink_house_body_entered"]
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
 [connection signal="body_entered" from="enter_brown_house" to="." method="_on_enter_brown_house_body_entered"]
 [connection signal="mite_1_collide" from="Player" to="." method="_on_player_mite_1_collide"]
 [connection signal="mite_1_collide" from="Player" to="Mite1" method="_on_player_mite_1_collide"]
+[connection signal="startDialogue" from="Player" to="." method="_on_player_start_dialogue"]
+[connection signal="startDialogue" from="Player" to="Mite1" method="_on_player_start_dialogue"]
+[connection signal="textCompleted" from="Player/Dialogue" to="Mite1" method="_on_dialogue_text_completed"]
