@@ -8,6 +8,12 @@ var bat_path = "res://LEVELS/LEVEL_1/bat.tscn"
 var frameCount = 0
 
 var speed = Global.speed
+@onready var mmm1Dialog: Array = [
+	"This is a test of the Emergency Broadcast System",
+	"Lorem ipsum dolor. Tempus fugit.",
+	"Anyway, haha, byeeeeee"
+]
+
 
 func set_leds(parent_node: Node2D) -> void:
 	# Set the LED frames and begin playing
@@ -88,3 +94,10 @@ func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 		Global.music_pos = $bgm.get_playback_position()
 		await transition()
 		Global.goto_scene(house_1)
+
+func _on_player_mite_1_collide() -> void:
+	pass
+	#$Player/AnimatedSprite2D.play("idle")
+	#$textBoxUi.show()
+	#$textBoxUi/Camera2D.make_current()
+	#$textBoxUi/textBox.text = mmm1Dialog[0]

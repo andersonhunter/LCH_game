@@ -75,6 +75,7 @@ script = ExtResource("4_xjjic")
 position = Vector2(-1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, 0)
 zoom = Vector2(8, 8)
 
 [node name="LED_SET_1" type="Node2D" parent="."]
@@ -219,4 +220,5 @@ parameters/looping = true
 [connection signal="body_entered" from="enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
 [connection signal="body_entered" from="enter_brown_house" to="." method="_on_enter_brown_house_body_entered"]
+[connection signal="mite_1_collide" from="Player" to="." method="_on_player_mite_1_collide"]
 [connection signal="mite_1_collide" from="Player" to="Mite1" method="_on_player_mite_1_collide"]
