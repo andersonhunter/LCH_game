@@ -10,11 +10,16 @@ var darkOverworld = preload("res://LEVELS/LEVEL_1/dark_overworld.tscn").instanti
 @onready var player: CharacterBody2D = get_node("overworld").get_node("Player")
 
 var speed = Global.speed
-@onready var mmm1Dialog: Array = [
-	"[color=green][wave]Hello world[/wave][/color]",
-	"[color=green]Programmed to think but not to feel[/color]",
-	"[color=green]Not even sure if this is real...[/color]"
-]
+@onready var mm1Dialog = [
+	[
+		"[color=green][wave]Hello![/wave][/color]",
+		"[color=green]What kinda [/color][color=brown]bug[/color][color=green] are you??[/color]",
+		"[color=green][wave]Anyway...[/wave][/color]",
+		"[color=green]Everyone's gone to the swamp...[/color]",
+		"[color=green]I wanna go too! Except...[/color]",
+		"[color=brown]Ada [/color][color=green]has the only key to get in...[/color]"
+	]
+	]
 
 signal startDialog(message: Array)
 
@@ -98,10 +103,11 @@ func _on_enter_pink_house_body_entered(body: Node2D) -> void:
 
 func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
 	var dialogue = player.get_node("Dialogue")
-	$overworld.get_node("Bat").hide()
+	if Global.has_bat:
+		$overworld.get_node("Bat").hide()
 	player.speed = 0.
 	dialogue.show()
-	startDialog.emit(mmm1Dialog)
+	startDialog.emit(mm1Dialog[0])
 	await dialogue.textCompleted
 	dialogue.hide()
 	$overworld.get_node("Bat").show()
