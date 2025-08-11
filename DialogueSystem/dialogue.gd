@@ -17,14 +17,18 @@ func update_message(message: String) -> void:
 	content.visible_characters = 0
 	type_timer.start()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func processText(messages: Array) -> void:
 	for message in messages:
 		await get_tree().create_timer(messageDuration).timeout
 		update_message(message)
 	await get_tree().create_timer(messageDuration).timeout
 	textCompleted.emit()
 	self.hide()
+	update_message(" ")
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,3 +50,6 @@ func _on_pause_calculator_pause_requested(duration: Variant) -> void:
 func _on_pause_timer_timeout() -> void:
 	pause_timer.stop()
 	type_timer.start()
+
+func _on_little_endian_start_dialog(message: Array) -> void:
+	processText(message)
