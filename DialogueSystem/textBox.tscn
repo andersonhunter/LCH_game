@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7xd0b")
-region_rect = Rect2(5, 5, 2, 2)
+region_rect = Rect2(0, 5, 12, 2)
 
 [node name="Content" type="RichTextLabel" parent="."]
 clip_contents = false
