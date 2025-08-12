@@ -53,3 +53,6 @@ func _on_pause_timer_timeout() -> void:
 
 func _on_little_endian_start_dialog(message: Array) -> void:
 	processText(message)
+
+func _on_inside_house_1_start_dialog(message: Array) -> void:
+	processText(message)
