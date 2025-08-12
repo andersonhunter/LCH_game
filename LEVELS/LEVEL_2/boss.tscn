@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvjxs6v5r24l8"]
+
+[ext_resource type="Texture2D" uid="uid://b7fds02wo30ht" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_1.png" id="1_fjb8t"]
+[ext_resource type="StyleBox" uid="uid://bawl615u4sc2y" path="res://styleboxes/healthBarBackground.tres" id="2_e77hn"]
+[ext_resource type="Texture2D" uid="uid://c21627j2np8y" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_2.png" id="2_ebu1d"]
+[ext_resource type="Texture2D" uid="uid://fas4vv88ghyg" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_3.png" id="3_5lydh"]
+[ext_resource type="StyleBox" uid="uid://djoe5nqopuinu" path="res://styleboxes/healthBarFill.tres" id="3_ntha6"]
+[ext_resource type="FontFile" uid="uid://c7w1nb10xnqaq" path="res://tinypixel/tinypixel/tinypixel.otf" id="4_qej62"]
+[ext_resource type="Texture2D" uid="uid://dwfvijq1acnip" path="res://ASSETS/SPRITES/ENEMIES/targeted_2.png" id="5_qq8wc"]
+[ext_resource type="Texture2D" uid="uid://cpnjq1sugt7xx" path="res://ASSETS/SPRITES/ENEMIES/targeted_1.png" id="6_3vj2x"]
+[ext_resource type="Texture2D" uid="uid://dddyye6cug8ov" path="res://ASSETS/SPRITES/ENEMIES/targeted.png" id="7_8h6qc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mon4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fjb8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ebu1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5lydh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jdd3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qq8wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3vj2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8h6qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3vj2x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="boss" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_mon4u")
+autoplay = "default"
+frame_progress = 0.99131
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -16.0
+offset_right = -9.0
+offset_bottom = 11.0
+rotation = -1.5708
+theme_override_styles/background = ExtResource("2_e77hn")
+theme_override_styles/fill = ExtResource("3_ntha6")
+step = 1.0
+allow_greater = true
+allow_lesser = true
+fill_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = -13.0
+offset_top = -16.0
+offset_right = 27.0
+offset_bottom = 7.0
+scale = Vector2(0.68, 0.28)
+theme_override_fonts/font = ExtResource("4_qej62")
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="targeted" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_3jdd3")
+frame = 2
+frame_progress = 0.355242

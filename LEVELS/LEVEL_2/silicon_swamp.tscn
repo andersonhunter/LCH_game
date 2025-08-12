@@ -101,15 +101,17 @@ visible = false
 [node name="Camera2D" type="Camera2D" parent="overworld/Player"]
 zoom = Vector2(8, 8)
 
-[node name="boss" type="AnimatableBody2D" parent="."]
+[node name="boss" type="AnimatableBody2D" parent="overworld"]
 position = Vector2(0, -264)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="boss"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="overworld/boss"]
 sprite_frames = SubResource("SpriteFrames_fx520")
 autoplay = "default"
 frame_progress = 0.184658
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="boss"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="overworld/boss"]
 shape = SubResource("RectangleShape2D_6p56m")
+
+[connection signal="startDialog" from="." to="overworld/Player/Dialogue" method="_on_silicon_swamp_start_dialog"]
 
 [editable path="overworld/Player"]

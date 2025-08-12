@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://vlr804xi13c2"]
+
+[ext_resource type="Script" path="res://LEVELS/LEVEL_2/boss_battle_scene.gd" id="1_qn7dd"]
+[ext_resource type="PackedScene" uid="uid://bspb36dddjtev" path="res://LEVELS/LEVEL_2/battle_ui.tscn" id="2_jyuh3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pe7q"]
+resource_local_to_scene = true
+resource_name = "battleOutline"
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.647059, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+shadow_color = Color(1, 1, 1, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb10n"]
+resource_local_to_scene = true
+resource_name = "battleOutline"
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.647059, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+shadow_color = Color(1, 1, 1, 0)
+anti_aliasing = false
+
+[node name="bossBattleScene" type="Node2D"]
+script = ExtResource("1_qn7dd")
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="enemy1" type="Node2D" parent="enemies"]
+position = Vector2(0, -56)
+
+[node name="enemy2" type="Node2D" parent="enemies"]
+position = Vector2(32, -48)
+
+[node name="enemy3" type="Node2D" parent="enemies"]
+position = Vector2(-32, -48)
+
+[node name="battleUI" parent="." instance=ExtResource("2_jyuh3")]
+offset_left = -80.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = 88.0
+scale = Vector2(1, 0.760001)
+
+[node name="attack" parent="battleUI/commands" index="0"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pe7q")
+
+[node name="defend" parent="battleUI/commands" index="1"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4pe7q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pe7q")
+
+[node name="enemy1" parent="battleUI/enemySelect" index="0"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_wb10n")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_wb10n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wb10n")
+
+[node name="enemy2" parent="battleUI/enemySelect" index="1"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_wb10n")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_wb10n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wb10n")
+
+[node name="enemy3" parent="battleUI/enemySelect" index="2"]
+theme_override_styles/focus = SubResource("StyleBoxFlat_wb10n")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_wb10n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wb10n")
+
+[node name="player" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[connection signal="pressed" from="battleUI/commands/attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="battleUI/commands/defend" to="." method="_on_defend_pressed"]
+[connection signal="focus_entered" from="battleUI/enemySelect/enemy1" to="." method="_on_enemy_1_focus_entered"]
+[connection signal="focus_exited" from="battleUI/enemySelect/enemy1" to="." method="_on_enemy_1_focus_exited"]
+[connection signal="pressed" from="battleUI/enemySelect/enemy1" to="." method="_on_enemy_1_pressed"]
+[connection signal="focus_entered" from="battleUI/enemySelect/enemy2" to="." method="_on_enemy_2_focus_entered"]
+[connection signal="focus_exited" from="battleUI/enemySelect/enemy2" to="." method="_on_enemy_2_focus_exited"]
+[connection signal="pressed" from="battleUI/enemySelect/enemy2" to="." method="_on_enemy_2_pressed"]
+[connection signal="focus_entered" from="battleUI/enemySelect/enemy3" to="." method="_on_enemy_3_focus_entered"]
+[connection signal="focus_exited" from="battleUI/enemySelect/enemy3" to="." method="_on_enemy_3_focus_exited"]
+[connection signal="pressed" from="battleUI/enemySelect/enemy3" to="." method="_on_enemy_3_pressed"]
+
+[editable path="battleUI"]
