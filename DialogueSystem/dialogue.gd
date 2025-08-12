@@ -19,6 +19,7 @@ func update_message(message: String) -> void:
 
 func processText(messages: Array) -> void:
 	for message in messages:
+		print(message)
 		await get_tree().create_timer(messageDuration).timeout
 		update_message(message)
 	await get_tree().create_timer(messageDuration).timeout
@@ -55,4 +56,7 @@ func _on_little_endian_start_dialog(message: Array) -> void:
 	processText(message)
 
 func _on_inside_house_1_start_dialog(message: Array) -> void:
+	processText(message)
+
+func _on_silicon_swamp_start_dialog(message: Variant) -> void:
 	processText(message)
