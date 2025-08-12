@@ -17,7 +17,7 @@ var player_location = null
 var position_array: Array  # Hold player's last 100 positions
 var has_bat: bool = false
 var music_pos: float = 0.
-@export var music_volume: float = -10.0
+@export var music_volume: float = -20.0
 var isDark = false
 
 func goto_scene(path: String):
