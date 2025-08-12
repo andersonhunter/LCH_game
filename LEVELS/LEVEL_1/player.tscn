@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://p0ye6xumm1pp"]
+[gd_scene load_steps=19 format=3 uid="uid://p0ye6xumm1pp"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/player.gd" id="1_q4vw7"]
 [ext_resource type="Texture2D" uid="uid://gmf1d88krar7" path="res://ASSETS/SPRITES/idle_1.png" id="2_ftxn4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://du1crknot6vve" path="res://DialogueSystem/enter_prompt.tscn" id="13_iec0i"]
 [ext_resource type="PackedScene" uid="uid://cploxax04lv60" path="res://DialogueSystem/textBox.tscn" id="14_51f3r"]
 [ext_resource type="PackedScene" uid="uid://bswh4v1rrx6nk" path="res://DialogueSystem/enter_new_area_prompt.tscn" id="15_lhlh2"]
+[ext_resource type="PackedScene" uid="uid://c6r8yw5ahduky" path="res://DialogueSystem/level_up.tscn" id="16_vlg2l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d6r0l"]
 animations = [{
@@ -119,3 +120,9 @@ offset_left = 8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = -8.0
+
+[node name="levelUp" parent="." instance=ExtResource("16_vlg2l")]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -16.0
+offset_bottom = -16.0
