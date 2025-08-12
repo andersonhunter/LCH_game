@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://fig1bijc3ltm"]
+
+[ext_resource type="Texture2D" uid="uid://g4bdmwpjnur" path="res://ASSETS/brownie_1.png" id="1_tim47"]
+[ext_resource type="Texture2D" uid="uid://batpit1wx4tta" path="res://ASSETS/brownie_2.png" id="2_iws8y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gm5gj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tim47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iws8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_iws8y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y73c0"]
+radius = 2.0
+
+[node name="cosmicBrownie" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gm5gj")
+frame_progress = 0.685564
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y73c0")

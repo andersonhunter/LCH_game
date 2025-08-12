@@ -108,3 +108,5 @@ frame_progress = 0.184658
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss"]
 shape = SubResource("RectangleShape2D_6p56m")
+
+[editable path="overworld/Player"]

@@ -18,6 +18,7 @@ var player = preload("res://LEVELS/LEVEL_2/player_battle.tscn").instantiate()
 var sceneCharacters: Dictionary # {char: {stats}...}
 var turnQueue: Array # [char: Node2D, char: Node2D, ...]
 var enemies: Array
+var numEnemies: int
 
 func setLabelText(text: String) -> void:
 	$battleUI/textBox.show()
@@ -37,7 +38,7 @@ func setHealthBar(unit, health, maxHealth):
 
 func addEnemies():
 	# Adds enemies to scene depending on how many enemies spawn [1..3]
-	var numEnemies = RandomNumberGenerator.new().randi_range(1, 3)
+	numEnemies = RandomNumberGenerator.new().randi_range(1, 3)
 	# Remove superfluous enemies
 	match numEnemies:
 		1:
@@ -73,6 +74,7 @@ func characterDeath(character: Node2D) -> void:
 			character.get_parent().free()
 			if enemies.size() == 0:
 				# Switch scenes
+				Global.playerStats["exp"] += numEnemies
 				await get_tree().create_timer(0.25).timeout
 				# Remove scene from tree here
 				battleDone.emit()
