@@ -9,7 +9,7 @@ var playerStats = {
 	"defense": 2,
 	"speed": 2,
 	"exp": 0,
-	"level": 1
+	"level": 10
 }
 
 var current_scene = null
