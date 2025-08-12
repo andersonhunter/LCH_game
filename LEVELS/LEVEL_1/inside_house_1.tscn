@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://qkdj0y5xciq2"]
+[gd_scene load_steps=12 format=4 uid="uid://qkdj0y5xciq2"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_k4pac"]
 [ext_resource type="PackedScene" uid="uid://c4e6esw3j7t65" path="res://LEVELS/LEVEL_1/house_1.tscn" id="2_qcrpp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://da7do43t4717t" path="res://ASSETS/white_light_3.png" id="6_egeap"]
 [ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="7_hpk3f"]
 [ext_resource type="AudioStream" uid="uid://dn0tqsb6qvups" path="res://ASSETS/MUSIC/House Theme.mp3" id="8_r1j50"]
+[ext_resource type="PackedScene" uid="uid://dtxmaund27bnf" path="res://LEVELS/LEVEL_1/dark_overworld.tscn" id="9_3xsbh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yw84q"]
 animations = [{
@@ -87,5 +88,12 @@ offset_bottom = -659.0
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_r1j50")
 parameters/looping = true
+
+[node name="darkOverworld" parent="." instance=ExtResource("9_3xsbh")]
+visible = false
+offset_left = -199.0
+offset_top = -199.0
+offset_right = -522.0
+offset_bottom = -583.0
 
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]

@@ -12,6 +12,8 @@ func _ready() -> void:
 	if Global.has_bat:
 			$BatSolo.hide()
 			$BatSolo/CollisionShape2D.disabled = true
+	if Global.isDark:
+		$darkOverworld.show()
 	$bgm.volume_db = Global.music_volume
 	$bgm.play()
 

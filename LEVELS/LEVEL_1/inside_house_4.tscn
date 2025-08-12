@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://y6edtms8t7m1"]
+[gd_scene load_steps=19 format=4 uid="uid://y6edtms8t7m1"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_qxd4x"]
 [ext_resource type="Texture2D" uid="uid://dymkignoxtbc8" path="res://ASSETS/map_1_tileset.png" id="2_3ci85"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="8_m2k2p"]
 [ext_resource type="AudioStream" uid="uid://dn0tqsb6qvups" path="res://ASSETS/MUSIC/House Theme.mp3" id="9_1akqi"]
 [ext_resource type="PackedScene" uid="uid://dyldiag4kvln1" path="res://LEVELS/LEVEL_1/bat.tscn" id="10_7krmy"]
+[ext_resource type="PackedScene" uid="uid://dtxmaund27bnf" path="res://LEVELS/LEVEL_1/dark_overworld.tscn" id="11_jhvq5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_imubs"]
 texture = ExtResource("2_3ci85")
@@ -283,5 +284,12 @@ position = Vector2(36, 31)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BatSolo"]
 shape = SubResource("CapsuleShape2D_prvns")
+
+[node name="darkOverworld" parent="." instance=ExtResource("11_jhvq5")]
+visible = false
+offset_left = -134.0
+offset_top = -127.0
+offset_right = -586.0
+offset_bottom = -644.0
 
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]

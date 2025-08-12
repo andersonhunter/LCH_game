@@ -18,6 +18,9 @@ var speed = Global.speed
 		"[color=green]Everyone's gone to the swamp...[/color]",
 		"[color=green]I wanna go too! Except...[/color]",
 		"[color=brown]Ada [/color][color=green]has the only key to get in...[/color]"
+	],
+	[
+		"[color=green]Who turned out the lights...[/color]"
 	]
 	]
 
@@ -63,6 +66,8 @@ func _ready() -> void:
 	# Set up bgm
 	$overworld/bgm.volume_db = Global.music_volume
 	$overworld/bgm.play(Global.music_pos)
+	if Global.isDark:
+		add_child(darkOverworld)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -107,7 +112,10 @@ func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
 		$overworld.get_node("Bat").hide()
 	player.speed = 0.
 	dialogue.show()
-	startDialog.emit(mm1Dialog[0])
+	if not Global.has_bat and not Global.isDark:
+		startDialog.emit(mm1Dialog[0])
+	elif Global.isDark:
+		startDialog.emit(mm1Dialog[1])
 	await dialogue.textCompleted
 	dialogue.hide()
 	if Global.has_bat:
