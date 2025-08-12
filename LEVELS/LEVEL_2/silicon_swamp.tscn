@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq4w3tnwrbenk"]
+[gd_scene load_steps=18 format=3 uid="uid://cq4w3tnwrbenk"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/silicon_swamp.gd" id="1_xnhf8"]
 [ext_resource type="PackedScene" uid="uid://b31j83y0703ip" path="res://LEVELS/LEVEL_2/swamp_map.tscn" id="2_1yd55"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c21627j2np8y" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_2.png" id="8_2g43f"]
 [ext_resource type="Texture2D" uid="uid://fas4vv88ghyg" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_3.png" id="9_xuryh"]
 [ext_resource type="AudioStream" uid="uid://ru8n0gsviy1n" path="res://ASSETS/MUSIC/Battle Transition.mp3" id="11_ftlab"]
+[ext_resource type="PackedScene" uid="uid://dtxmaund27bnf" path="res://LEVELS/LEVEL_1/dark_overworld.tscn" id="12_2ga2h"]
+[ext_resource type="AudioStream" uid="uid://dn0tqsb6qvups" path="res://ASSETS/MUSIC/House Theme.mp3" id="13_lmtbj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7pja"]
 animations = [{
@@ -112,6 +114,12 @@ shape = SubResource("RectangleShape2D_6p56m")
 
 [node name="bossTransition" type="AudioStreamPlayer" parent="overworld"]
 stream = ExtResource("11_ftlab")
+
+[node name="darkOverworld" parent="." instance=ExtResource("12_2ga2h")]
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_lmtbj")
+parameters/looping = true
 
 [connection signal="startDialog" from="." to="overworld/Player/Dialogue" method="_on_silicon_swamp_start_dialog"]
 

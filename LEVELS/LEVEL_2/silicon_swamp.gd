@@ -29,6 +29,10 @@ signal startDialog(message)
 	]
 ]
 
+func _ready() -> void:
+	$bgm.volume_db = Global.music_volume
+	$bgm.play()
+
 func startBattle():
 	removeEnemy = $overworld/Player.get_last_slide_collision().get_collider()
 	removeEnemy.get_node("CollisionShape2D").disabled = true
@@ -59,6 +63,7 @@ func startBossBattle():
 		bossBattle = true
 		player.speed = 0
 		player.position += Vector2(0., 16.)
+		$bgm.stop()
 		$overworld/bossTransition.volume_db = Global.music_volume
 		dialog.show()
 		startDialog.emit(sceneDialog[1])
@@ -67,6 +72,7 @@ func startBossBattle():
 		await $overworld/bossTransition.finished
 		dialog.hide()
 		$overworld.propagate_call("hide")
+		$darkOverworld.hide()
 		self.add_child(bossBattleScene)
 		bossBattleScene.battleDone.connect(_on_battleDone)
 
