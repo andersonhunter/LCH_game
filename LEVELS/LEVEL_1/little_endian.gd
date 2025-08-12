@@ -110,5 +110,6 @@ func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
 	startDialog.emit(mm1Dialog[0])
 	await dialogue.textCompleted
 	dialogue.hide()
-	$overworld.get_node("Bat").show()
+	if Global.has_bat:
+		$overworld.get_node("Bat").show()
 	player.speed = Global.speed
