@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq4w3tnwrbenk"]
+[gd_scene load_steps=16 format=3 uid="uid://cq4w3tnwrbenk"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/silicon_swamp.gd" id="1_xnhf8"]
 [ext_resource type="PackedScene" uid="uid://b31j83y0703ip" path="res://LEVELS/LEVEL_2/swamp_map.tscn" id="2_1yd55"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b7fds02wo30ht" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_1.png" id="7_00nlr"]
 [ext_resource type="Texture2D" uid="uid://c21627j2np8y" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_2.png" id="8_2g43f"]
 [ext_resource type="Texture2D" uid="uid://fas4vv88ghyg" path="res://ASSETS/SPRITES/ENEMIES/boss_overworld_3.png" id="9_xuryh"]
+[ext_resource type="AudioStream" uid="uid://ru8n0gsviy1n" path="res://ASSETS/MUSIC/Battle Transition.mp3" id="11_ftlab"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7pja"]
 animations = [{
@@ -108,6 +109,9 @@ frame_progress = 0.184658
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="overworld/boss"]
 shape = SubResource("RectangleShape2D_6p56m")
+
+[node name="bossTransition" type="AudioStreamPlayer" parent="overworld"]
+stream = ExtResource("11_ftlab")
 
 [connection signal="startDialog" from="." to="overworld/Player/Dialogue" method="_on_silicon_swamp_start_dialog"]
 

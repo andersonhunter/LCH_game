@@ -59,9 +59,12 @@ func startBossBattle():
 		bossBattle = true
 		player.speed = 0
 		player.position += Vector2(0., 16.)
+		$overworld/bossTransition.volume_db = Global.music_volume
 		dialog.show()
 		startDialog.emit(sceneDialog[1])
 		await dialog.textCompleted
+		$overworld/bossTransition.play()
+		await $overworld/bossTransition.finished
 		dialog.hide()
 		$overworld.propagate_call("hide")
 		self.add_child(bossBattleScene)
