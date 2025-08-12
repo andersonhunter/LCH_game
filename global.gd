@@ -8,7 +8,8 @@ var playerStats = {
 	"attack": 2,
 	"defense": 2,
 	"speed": 2,
-	"exp": 0
+	"exp": 0,
+	"level": 1
 }
 
 var current_scene = null
@@ -38,3 +39,20 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func levelUp() -> bool:
+	if playerStats["exp"] >= playerStats["level"] * 3:
+		playerStats["exp"] = clamp(
+			playerStats["exp"] - playerStats["level"] * 3,
+			0,
+			playerStats["exp"]
+		)
+		playerStats["level"] += 1
+		playerStats["base health"] += 2
+		playerStats["current health"] = playerStats["base health"]
+		playerStats["attack"] += 1
+		playerStats["defense"] += 1
+		if playerStats["level"] % 2 == 0:
+			playerStats["speed"] += 1
+		return true
+	return false
