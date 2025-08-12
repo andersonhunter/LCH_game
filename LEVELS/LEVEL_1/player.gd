@@ -39,11 +39,15 @@ func _process(delta: float) -> void:
 	if rayCast.is_colliding():
 		# Collision detection for ray
 		var collider = rayCast.get_collider()
-		if collider.name == "mold_mite_1":
-			#mite_1_collide.emit()
-			$enterPrompt.show()
-		if collider.name == "mold_mite_1" and Input.is_action_pressed("enter"):
-			startDialogue.emit(collider)
+		match collider.name:
+			"mold_mite_1":
+				$enterPrompt.show()
+				if Input.is_action_pressed("enter"):
+					startDialogue.emit(collider)
+			"BatSolo":
+				$enterPrompt.show()
+				if Input.is_action_pressed("enter"):
+					startDialogue.emit(collider)
 	if not rayCast.is_colliding():
 		$enterPrompt.hide()
 	velocity = input * speed

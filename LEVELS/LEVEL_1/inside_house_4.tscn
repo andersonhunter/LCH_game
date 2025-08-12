@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://y6edtms8t7m1"]
 
-[ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_1.gd" id="1_qxd4x"]
+[ext_resource type="Script" path="res://LEVELS/LEVEL_1/inside_house_4.gd" id="1_5fji6"]
 [ext_resource type="Texture2D" uid="uid://dymkignoxtbc8" path="res://ASSETS/map_1_tileset.png" id="2_3ci85"]
 [ext_resource type="PackedScene" uid="uid://c4e6esw3j7t65" path="res://LEVELS/LEVEL_1/house_1.tscn" id="2_dhrrj"]
 [ext_resource type="PackedScene" uid="uid://p0ye6xumm1pp" path="res://LEVELS/LEVEL_1/player.tscn" id="3_evln1"]
@@ -221,7 +221,7 @@ radius = 4.0
 height = 8.0
 
 [node name="inside_house_1" type="Node"]
-script = ExtResource("1_qxd4x")
+script = ExtResource("1_5fji6")
 
 [node name="wall" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -237,12 +237,6 @@ tile_map_data = PackedByteArray("AAD9/wAAAAAHACkAAAACAAAAAAAHACkAAAA=")
 texture_filter = 1
 tile_map_data = PackedByteArray("AAD9/wIAAAAOACAAAAACAAIAAAARACAAAAACAAEAAAARAB8AAAABAAEAAAAQAB8AAAAAAAEAAAAQAB8AAAD//wEAAAAQAB8AAAD+/wEAAAAQAB8AAAD9/wEAAAAOAB8AAAD//wIAAAAPACAAAAD+/wIAAAAQACAAAAAAAAIAAAAQACAAAAABAAIAAAAQACAAAAA=")
 tile_set = SubResource("TileSet_16vp2")
-
-[node name="Player" parent="." instance=ExtResource("3_evln1")]
-position = Vector2(-8, 37)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
 
 [node name="l_light" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -285,6 +279,17 @@ position = Vector2(36, 31)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BatSolo"]
 shape = SubResource("CapsuleShape2D_prvns")
 
+[node name="Player" parent="." instance=ExtResource("3_evln1")]
+position = Vector2(-8, 32)
+
+[node name="Dialogue" parent="Player" index="4"]
+offset_top = -24.0
+offset_bottom = 16.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(8, -32)
+zoom = Vector2(6, 6)
+
 [node name="darkOverworld" parent="." instance=ExtResource("11_jhvq5")]
 visible = false
 offset_left = -134.0
@@ -292,4 +297,8 @@ offset_top = -127.0
 offset_right = -586.0
 offset_bottom = -644.0
 
+[connection signal="startDialog" from="." to="Player/Dialogue" method="_on_inside_house_1_start_dialog"]
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]
+[connection signal="startDialogue" from="Player" to="." method="_on_player_start_dialogue"]
+
+[editable path="Player"]
