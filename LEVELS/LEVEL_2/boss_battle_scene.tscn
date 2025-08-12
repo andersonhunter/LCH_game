@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://vlr804xi13c2"]
+[gd_scene load_steps=6 format=3 uid="uid://vlr804xi13c2"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_2/boss_battle_scene.gd" id="1_qn7dd"]
 [ext_resource type="PackedScene" uid="uid://bspb36dddjtev" path="res://LEVELS/LEVEL_2/battle_ui.tscn" id="2_jyuh3"]
+[ext_resource type="AudioStream" uid="uid://dtj386fo0vjsk" path="res://ASSETS/MUSIC/Boss Battle Theme.mp3" id="3_rfyaj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pe7q"]
 resource_local_to_scene = true
@@ -95,6 +96,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wb10n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rfyaj")
+parameters/looping = true
 
 [connection signal="pressed" from="battleUI/commands/attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="battleUI/commands/defend" to="." method="_on_defend_pressed"]

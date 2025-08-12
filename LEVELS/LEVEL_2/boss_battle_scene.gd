@@ -147,6 +147,9 @@ func _ready() -> void:
 	addEnemies()
 	sortTurnQueue()
 	$Camera2D.make_current()
+	$bgm.volume_db = Global.music_volume
+	$bgm.play()
+	await get_tree().create_timer(5.0).timeout
 	takeTurn()
 
 func _on_attack_pressed() -> void:
