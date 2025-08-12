@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://1ptksoeppc8j"]
+[gd_scene load_steps=16 format=4 uid="uid://1ptksoeppc8j"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/little_endian.gd" id="1_j410d"]
 [ext_resource type="PackedScene" uid="uid://bhsegbh3s6k8c" path="res://LEVELS/LEVEL_1/tile_map_layer.tscn" id="2_coe6v"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xk128etno3lt" path="res://LEVELS/LEVEL_1/scene_transition_rect.tscn" id="6_n14ku"]
 [ext_resource type="AudioStream" uid="uid://bdxo41ksxykb" path="res://ASSETS/MUSIC/Little Endian Overworld Theme.mp3" id="7_d6i20"]
 [ext_resource type="PackedScene" uid="uid://bpr2g0kiff414" path="res://LEVELS/LEVEL_1/mold_mite.tscn" id="8_47f8w"]
+[ext_resource type="Texture2D" uid="uid://t2roklskd53r" path="res://ASSETS/TILES/dialogue_backgroung.png" id="10_elthb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvhcb"]
 size = Vector2(4, 2)
@@ -21,6 +22,8 @@ size = Vector2(4, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srjm5"]
 size = Vector2(4, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf32c"]
 
 [node name="little_endian" type="Node"]
 script = ExtResource("1_j410d")
@@ -72,6 +75,18 @@ position = Vector2(-17, -40)
 script = ExtResource("4_xjjic")
 
 [node name="mold_mite_1" parent="overworld/Mite1" instance=ExtResource("8_47f8w")]
+
+[node name="enterSwamp" type="Area2D" parent="overworld"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="overworld/enterSwamp"]
+position = Vector2(0, -8)
+scale = Vector2(0.639998, 0.64)
+shape = SubResource("RectangleShape2D_sf32c")
+
+[node name="Sprite2D" type="Sprite2D" parent="overworld/enterSwamp"]
+position = Vector2(0, -8)
+texture = ExtResource("10_elthb")
 
 [node name="Player" parent="overworld" instance=ExtResource("4_cwj72")]
 position = Vector2(-1, 0)
@@ -223,6 +238,8 @@ parameters/looping = true
 [connection signal="body_entered" from="overworld/enter_purple_house" to="." method="_on_enter_purple_house_body_entered"]
 [connection signal="body_entered" from="overworld/enter_blue_house" to="." method="_on_enter_blue_house_body_entered"]
 [connection signal="body_entered" from="overworld/enter_brown_house" to="." method="_on_enter_brown_house_body_entered"]
+[connection signal="body_shape_entered" from="overworld/enterSwamp" to="." method="_on_enter_swamp_body_shape_entered"]
+[connection signal="enterSwamp" from="overworld/Player" to="." method="_on_player_enter_swamp"]
 [connection signal="mite_1_collide" from="overworld/Player" to="." method="_on_player_mite_1_collide"]
 [connection signal="mite_1_collide" from="overworld/Player" to="overworld/Mite1" method="_on_player_mite_1_collide"]
 [connection signal="startDialogue" from="overworld/Player" to="." method="_on_player_start_dialogue"]

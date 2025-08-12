@@ -4,7 +4,7 @@ var house_1 = "res://LEVELS/LEVEL_1/inside_house_1.tscn"
 var house_2 = "res://LEVELS/LEVEL_1/inside_house_2.tscn"
 var house_3 = "res://LEVELS/LEVEL_1/inside_house_3.tscn"
 var house_4 = "res://LEVELS/LEVEL_1/inside_house_4.tscn"
-var bat_path = "res://LEVELS/LEVEL_1/bat.tscn"
+var swamp = "res://LEVELS/LEVEL_2/silicon_swamp.tscn"
 var frameCount = 0
 var darkOverworld = preload("res://LEVELS/LEVEL_1/dark_overworld.tscn").instantiate()
 @onready var player: CharacterBody2D = get_node("overworld").get_node("Player")
@@ -121,3 +121,8 @@ func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
 	if Global.has_bat:
 		$overworld.get_node("Bat").show()
 	player.speed = Global.speed
+
+func _on_player_enter_swamp() -> void:
+	if Global.has_bat:
+		await transition()
+		Global.goto_scene(swamp)

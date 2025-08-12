@@ -4,7 +4,10 @@ var leave_house = "res://LEVELS/LEVEL_1/little_endian.tscn"
 @onready var batDialog = [
 	[
 		"[color=green]Oh, hello! You're looking for Ada? [/color]",
-		"[color=green]Oh, that's me![/color]"
+		"[color=green]Oh, that's me![/color]",
+		"[color=green]You want to play in the [/color][wave][color=red]swa[/color][color=blue]mps?[/color][/wave]",
+		"[color=green]Sure! I'll follow... what was that?[/color]",
+		"[color=green]Let's go check outside![/color]"
 	]
 ]
 @onready var player = $Player
@@ -18,6 +21,7 @@ func transition() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$BatSolo.show()
 	if Global.has_bat:
 			$BatSolo.hide()
 			$BatSolo/CollisionShape2D.disabled = true
@@ -45,6 +49,9 @@ func _on_player_start_dialogue(collider: CharacterBody2D) -> void:
 	startDialog.emit(batDialog[0])
 	await dialogue.textCompleted
 	dialogue.hide()
+	$BatSolo.hide()
+	Global.has_bat = true
+	Global.isDark = true
 	player.speed = Global.speed
 	await get_tree().create_timer(1.0).timeout
 	collider.get_node("CollisionShape2D").disabled = false

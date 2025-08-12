@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://p0ye6xumm1pp"]
+[gd_scene load_steps=18 format=3 uid="uid://p0ye6xumm1pp"]
 
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/player.gd" id="1_q4vw7"]
 [ext_resource type="Texture2D" uid="uid://gmf1d88krar7" path="res://ASSETS/SPRITES/idle_1.png" id="2_ftxn4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://LEVELS/LEVEL_1/animated_sprite_2d.gd" id="12_asbbt"]
 [ext_resource type="PackedScene" uid="uid://du1crknot6vve" path="res://DialogueSystem/enter_prompt.tscn" id="13_iec0i"]
 [ext_resource type="PackedScene" uid="uid://cploxax04lv60" path="res://DialogueSystem/textBox.tscn" id="14_51f3r"]
+[ext_resource type="PackedScene" uid="uid://bswh4v1rrx6nk" path="res://DialogueSystem/enter_new_area_prompt.tscn" id="15_lhlh2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d6r0l"]
 animations = [{
@@ -111,3 +112,10 @@ offset_bottom = -8.0
 visible = false
 offset_left = -40.0
 offset_right = 40.0
+
+[node name="enterNewAreaPrompt" parent="." instance=ExtResource("15_lhlh2")]
+visible = false
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = -8.0

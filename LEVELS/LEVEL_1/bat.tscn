@@ -18,6 +18,7 @@ animations = [{
 }]
 
 [node name="Bat" type="CharacterBody2D"]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

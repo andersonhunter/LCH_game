@@ -264,12 +264,6 @@ frame_progress = 0.726372
 position = Vector2(-8, 44.5)
 shape = SubResource("RectangleShape2D_3xxo3")
 
-[node name="SceneTransitionRect" parent="." instance=ExtResource("8_m2k2p")]
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -656.0
-offset_bottom = -656.0
-
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_1akqi")
 
@@ -296,6 +290,12 @@ offset_left = -134.0
 offset_top = -127.0
 offset_right = -586.0
 offset_bottom = -644.0
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource("8_m2k2p")]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -656.0
+offset_bottom = -656.0
 
 [connection signal="startDialog" from="." to="Player/Dialogue" method="_on_inside_house_1_start_dialog"]
 [connection signal="body_entered" from="leave_house" to="." method="_on_leave_house_body_entered"]
