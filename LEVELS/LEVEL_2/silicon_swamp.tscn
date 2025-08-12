@@ -95,6 +95,9 @@ shape = SubResource("RectangleShape2D_7ijit")
 
 [node name="Player" parent="overworld" instance=ExtResource("3_l7dyn")]
 
+[node name="levelUp" parent="overworld/Player" index="6"]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="overworld/Player"]
 zoom = Vector2(8, 8)
 
