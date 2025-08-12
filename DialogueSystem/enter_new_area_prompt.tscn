@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bswh4v1rrx6nk"]
+
+[ext_resource type="FontFile" uid="uid://c7w1nb10xnqaq" path="res://tinypixel/tinypixel/tinypixel.otf" id="1_p2ij7"]
+
+[node name="enterNewAreaPrompt" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+clip_contents = false
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 8.0
+theme_override_fonts/normal_font = ExtResource("1_p2ij7")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+text = "[color=green][wave]Enter?[/wave][/color]"

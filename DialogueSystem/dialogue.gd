@@ -5,7 +5,7 @@ extends Control
 @onready var type_timer := get_node("TypeTyper") as Timer
 @onready var pause_timer := get_node("PauseTimer") as Timer
 @onready var _calc := get_node("PauseCalculator") as PauseCalculator
-var messageDuration: float = 2.0
+var messageDuration: float = 3.0
 
 var messages: Array = []
 
